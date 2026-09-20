@@ -1,3 +1,5 @@
+import { IconeFlecheHaut } from "./Icones";
+
 export default function Footer() {
   return (
     <footer className="border-t border-gold-500/15 px-6 py-10">
@@ -7,9 +9,10 @@ export default function Footer() {
           <span>Fait avec Next.js & Tailwind</span>
           <a
             href="#hero"
-            className="font-medium text-gold-300 transition hover:text-gold-200 hover:underline"
+            className="inline-flex items-center gap-1.5 font-medium text-gold-300 transition hover:text-gold-200 hover:underline"
           >
-            Retour en haut ↑
+            Retour en haut
+            <IconeFlecheHaut className="h-4 w-4" />
           </a>
         </p>
       </div>

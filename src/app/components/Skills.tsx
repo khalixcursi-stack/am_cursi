@@ -1,7 +1,14 @@
+import {
+  IconeCode,
+  IconeGamepad,
+  IconeGlobe,
+  IconeTerminal,
+} from "./Icones";
+
 const categories = [
   {
     titre: "Langages & code",
-    emoji: "⌨️",
+    icone: IconeCode,
     skills: [
       "C++ · POO (classes, pointeurs, mémoire)",
       "SQL · jointures, normalisation",
@@ -13,12 +20,12 @@ const categories = [
   },
   {
     titre: "Frameworks & web",
-    emoji: "🌐",
+    icone: IconeGlobe,
     skills: ["React", "Next.js", "Tailwind CSS", "Vibe coding"],
   },
   {
     titre: "Systèmes & réseaux",
-    emoji: "🐧",
+    icone: IconeTerminal,
     skills: [
       "Arch Linux",
       "Ubuntu Server",
@@ -32,7 +39,7 @@ const categories = [
   },
   {
     titre: "Outils & gamer",
-    emoji: "🎮",
+    icone: IconeGamepad,
     skills: [
       "VS Code + MinGW/MSYS2",
       "Git & GitHub",
@@ -62,7 +69,12 @@ export default function Skills() {
               className="rounded-2xl border border-gold-500/15 bg-nuit-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-or"
             >
               <h3 className="flex items-center gap-3 text-lg font-semibold text-gold-100">
-                <span aria-hidden="true" className="text-gold-400">{cat.emoji}</span>
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400"
+                >
+                  <cat.icone className="h-5 w-5" />
+                </span>
                 {cat.titre}
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">

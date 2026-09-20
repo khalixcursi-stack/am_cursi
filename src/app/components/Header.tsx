@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { IconeCroix, IconeMenu } from "./Icones";
 
 const liens = [
   { href: "#apropos", label: "À propos" },
@@ -41,19 +42,11 @@ export default function Header() {
         <div className="flex items-center md:hidden">
           <button
             onClick={() => setOuvert(!ouvert)}
-            aria-label="Ouvrir le menu"
+            aria-label={ouvert ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={ouvert}
-            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-lg border border-gold-500/30 text-gold-300 transition hover:bg-gold-500/10"
+            className="flex h-11 w-11 items-center justify-center rounded-lg border border-gold-500/30 text-gold-300 transition hover:bg-gold-500/10"
           >
-            <span
-              className={`h-0.5 w-5 bg-current transition ${ouvert ? "translate-y-2 rotate-45" : ""}`}
-            />
-            <span
-              className={`h-0.5 w-5 bg-current transition ${ouvert ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`h-0.5 w-5 bg-current transition ${ouvert ? "-translate-y-2 -rotate-45" : ""}`}
-            />
+            {ouvert ? <IconeCroix className="h-5 w-5" /> : <IconeMenu className="h-5 w-5" />}
           </button>
         </div>
       </div>

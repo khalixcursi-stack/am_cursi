@@ -1,11 +1,12 @@
 import { FREE_FIRE, IDENTITE } from "../data";
+import { IconeGamepad, IconeOrdinateur, IconeSmartphone } from "./Icones";
 
 const passions = ["One Piece", "Stoïcisme", "Free Fire", "Craftland Studio"];
 const setup = [
-  "💻 PC Dell · i5 8ᵉ gén · 8 Go RAM",
-  "📱 Galaxy Z Fold2 5G",
-  "📱 Galaxy A16",
-  "🎮 Xbox One",
+  { icone: IconeOrdinateur, label: "PC Dell · i5 8ᵉ gén · 8 Go RAM" },
+  { icone: IconeSmartphone, label: "Galaxy Z Fold2 5G" },
+  { icone: IconeSmartphone, label: "Galaxy A16" },
+  { icone: IconeGamepad, label: "Xbox One" },
 ];
 
 export default function About() {
@@ -62,10 +63,13 @@ export default function About() {
           <ul className="mt-3 flex flex-wrap gap-2">
             {setup.map((s) => (
               <li
-                key={s}
-                className="rounded-full border border-gold-500/15 px-4 py-2 text-sm text-neutral-300"
+                key={s.label}
+                className="flex items-center gap-2 rounded-full border border-gold-500/15 px-4 py-2 text-sm text-neutral-300"
               >
-                {s}
+                <span aria-hidden="true" className="text-gold-400">
+                  <s.icone className="h-4 w-4" />
+                </span>
+                {s.label}
               </li>
             ))}
           </ul>
