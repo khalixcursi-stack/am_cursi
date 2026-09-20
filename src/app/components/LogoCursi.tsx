@@ -16,7 +16,7 @@ const degrade = (
 /* Lockup complet : monogramme + wordmark + paraphe */
 export default function LogoCursi({ className = "h-10 w-auto" }: ProprietesLogo) {
   return (
-    <svg viewBox="0 0 212 60" className={className} role="img" aria-label="Cursi">
+    <svg viewBox="0 0 212 60" className={`logo-cursi ${className}`} role="img" aria-label="Cursi">
       <defs>{degrade}</defs>
 
       <g fill="none" stroke="url(#degrade-cursi)">
@@ -31,6 +31,7 @@ export default function LogoCursi({ className = "h-10 w-auto" }: ProprietesLogo)
         />
         {/* Paraphe sous le wordmark */}
         <path
+          className="paraphe"
           d="M68 44.5 C 92 50.5, 128 50.5, 152 45 C 168 41.5, 182 43, 196 47.5"
           strokeWidth="1.3"
           strokeLinecap="round"
@@ -38,7 +39,7 @@ export default function LogoCursi({ className = "h-10 w-auto" }: ProprietesLogo)
       </g>
 
       {/* Losange doré */}
-      <path d="M52.5 5.5 l2.6 2.6 -2.6 2.6 -2.6 -2.6 z" fill="url(#degrade-cursi)" />
+      <path className="losange" d="M52.5 5.5 l2.6 2.6 -2.6 2.6 -2.6 -2.6 z" fill="url(#degrade-cursi)" />
 
       {/* Wordmark */}
       <text
@@ -59,7 +60,7 @@ export default function LogoCursi({ className = "h-10 w-auto" }: ProprietesLogo)
 /* Monogramme seul (avatar, favicon, ornement) */
 export function MonogrammeCursi({ className = "h-10 w-10" }: ProprietesLogo) {
   return (
-    <svg viewBox="0 0 64 64" className={className} role="img" aria-label="Monogramme Cursi">
+    <svg viewBox="0 0 64 64" className={`logo-cursi ${className}`} role="img" aria-label="Monogramme Cursi">
       <defs>
         <linearGradient id="degrade-cursi-mono" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#F6EDD2" />
@@ -78,7 +79,7 @@ export function MonogrammeCursi({ className = "h-10 w-10" }: ProprietesLogo) {
         />
       </g>
 
-      <path d="M54 6 l3 3 -3 3 -3 -3 z" fill="url(#degrade-cursi-mono)" />
+      <path className="losange" d="M54 6 l3 3 -3 3 -3 -3 z" fill="url(#degrade-cursi-mono)" />
     </svg>
   );
 }

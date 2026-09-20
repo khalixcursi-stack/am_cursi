@@ -31,6 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body className="fond-nuit min-h-screen font-sans text-neutral-200 antialiased">
+        <div aria-hidden="true" className="halo-anime" />
         <Header />
         <main>{children}</main>
         <Footer />

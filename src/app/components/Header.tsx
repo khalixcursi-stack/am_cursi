@@ -51,7 +51,7 @@ export default function Header() {
 
       {ouvert && (
         <nav
-          className="flex flex-col gap-1 border-t border-gold-500/20 bg-nuit-950 px-6 py-4 md:hidden"
+          className="anim-fondu flex flex-col gap-1 border-t border-gold-500/20 bg-nuit-950 px-6 py-4 md:hidden"
           aria-label="Navigation mobile"
         >
           {liens.map((l) => (

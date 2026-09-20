@@ -1,4 +1,5 @@
 import { FREE_FIRE } from "../data";
+import Reveal from "./Reveal";
 
 const etapes = [
   {
@@ -24,24 +25,28 @@ export default function Experience() {
   return (
     <section id="parcours" className="border-y border-gold-500/10 bg-nuit-900/40 px-6 py-24">
       <div className="mx-auto max-w-3xl">
-        <h2 className="filet-dore font-serif text-3xl font-bold text-neutral-100">
-          Parcours
-        </h2>
-        <ol className="mt-12 space-y-10 border-l border-gold-500/25 pl-8">
-          {etapes.map((e) => (
-            <li key={e.date} className="relative">
-              <span
-                aria-hidden="true"
-                className="absolute -left-[2.45rem] top-1.5 h-4 w-4 rounded-full border-2 border-gold-400 bg-nuit-950"
-              />
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
-                {e.date}
-              </p>
-              <h3 className="mt-1 text-lg font-semibold text-gold-100">{e.titre}</h3>
-              <p className="mt-2 text-neutral-400">{e.texte}</p>
-            </li>
-          ))}
-        </ol>
+        <Reveal>
+          <h2 className="filet-dore font-serif text-3xl font-bold text-neutral-100">
+            Parcours
+          </h2>
+        </Reveal>
+        <Reveal delai={150}>
+          <ol className="mt-12 space-y-10 border-l border-gold-500/25 pl-8">
+            {etapes.map((e) => (
+              <li key={e.date} className="relative">
+                <span
+                  aria-hidden="true"
+                  className="point-dore absolute -left-[2.45rem] top-1.5 h-4 w-4 rounded-full border-2 border-gold-400 bg-nuit-950"
+                />
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
+                  {e.date}
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-gold-100">{e.titre}</h3>
+                <p className="mt-2 text-neutral-400">{e.texte}</p>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,12 +1,15 @@
 import { IDENTITE } from "../data";
 import { IconeFlecheHaut } from "./Icones";
 import LogoCursi from "./LogoCursi";
+import Reveal from "./Reveal";
 
 export default function Footer() {
   return (
     <footer className="border-t border-gold-500/15 px-6 py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8">
-        <LogoCursi className="h-10 w-auto" />
+        <Reveal>
+          <LogoCursi className="h-10 w-auto" />
+        </Reveal>
         <p className="font-serif italic text-gold-200/70">
           « {IDENTITE.devise} »
         </p>

@@ -29,6 +29,9 @@ Construit avec **Next.js 15 + TypeScript + Tailwind CSS**, suivant la méthode
 - Thème sombre par défaut + bascule clair/sombre persistée (localStorage)
 - HTML sémantique (header/main/section/footer), un seul `h1`, `alt` partout
 - SEO & Open Graph (`metadata`, `og.png`) pour une belle carte de partage
+- Animations soignées : entrée du Hero en cascade, révélations au scroll
+  (IntersectionObserver), reflet balayant sur les boutons or, paraphe du logo
+  retracé au survol, halo doré animé — avec respect de `prefers-reduced-motion`
 - Zéro dépendance superflue, polices système (build hors-ligne)
 
 ## 🚀 Lancer en local

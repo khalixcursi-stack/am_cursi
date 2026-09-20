@@ -5,20 +5,33 @@ export default function Hero() {
   return (
     <section id="hero" className="flex min-h-screen items-center justify-center px-6 pt-16">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="text-xs uppercase tracking-[0.35em] text-gold-400/90">
+        <p
+          className="anim-fondu text-xs uppercase tracking-[0.35em] text-gold-400/90"
+          style={{ animationDelay: "0.1s" }}
+        >
           {IDENTITE.ville} · 2026
         </p>
-        <h1 className="mt-6 font-serif text-5xl font-bold tracking-tight text-neutral-100 md:text-7xl">
+        <h1
+          className="anim-apparition mt-6 font-serif text-5xl font-bold tracking-tight text-neutral-100 md:text-7xl"
+          style={{ animationDelay: "0.25s" }}
+        >
           Bonjour, je suis{" "}
           <span className="bg-gradient-to-r from-gold-200 via-gold-400 to-gold-600 bg-clip-text text-transparent">
             {IDENTITE.prenom}
           </span>
         </h1>
-        <p className="mt-5 text-lg text-neutral-400 md:text-xl">
+        <p
+          className="anim-apparition mt-5 text-lg text-neutral-400 md:text-xl"
+          style={{ animationDelay: "0.45s" }}
+        >
           Étudiant en {IDENTITE.etudes}, développeur en devenir — et joueur
           Free Fire {FREE_FIRE.rang} depuis {FREE_FIRE.depuis}.
         </p>
-        <div className="mt-6 flex items-center justify-center gap-4">
+
+        <div
+          className="anim-apparition mt-6 flex items-center justify-center gap-4"
+          style={{ animationDelay: "0.6s" }}
+        >
           <span
             aria-hidden="true"
             className="hidden h-px w-14 bg-gradient-to-r from-transparent to-gold-500/70 sm:block"
@@ -34,10 +47,13 @@ export default function Hero() {
           />
         </div>
 
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <div
+          className="anim-apparition mt-9 flex flex-wrap items-center justify-center gap-4"
+          style={{ animationDelay: "0.75s" }}
+        >
           <a
             href="#projets"
-            className="rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-7 py-3.5 text-sm font-semibold text-nuit-950 shadow-or transition hover:brightness-110"
+            className="bouton-or rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-7 py-3.5 text-sm font-semibold text-nuit-950 shadow-or transition hover:brightness-110"
           >
             Voir mes projets
           </a>
@@ -49,7 +65,10 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 text-xs">
+        <div
+          className="anim-apparition mt-10 flex flex-wrap items-center justify-center gap-2 text-xs"
+          style={{ animationDelay: "0.9s" }}
+        >
           {[
             `${IDENTITE.age} ans`,
             IDENTITE.etudes,
