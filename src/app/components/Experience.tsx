@@ -22,21 +22,23 @@ const etapes = [
 
 export default function Experience() {
   return (
-    <section id="parcours" className="bg-neutral-50 px-6 py-24 dark:bg-neutral-900/40">
+    <section id="parcours" className="border-y border-gold-500/10 bg-nuit-900/40 px-6 py-24">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-3xl font-bold">Parcours</h2>
-        <ol className="mt-10 space-y-10 border-l border-neutral-300 pl-8 dark:border-neutral-700">
+        <h2 className="filet-dore font-serif text-3xl font-bold text-neutral-100">
+          Parcours
+        </h2>
+        <ol className="mt-12 space-y-10 border-l border-gold-500/25 pl-8">
           {etapes.map((e) => (
             <li key={e.date} className="relative">
               <span
                 aria-hidden="true"
-                className="absolute -left-[2.45rem] top-1.5 h-4 w-4 rounded-full border-2 border-blue-600 bg-white dark:border-blue-400 dark:bg-neutral-950"
+                className="absolute -left-[2.45rem] top-1.5 h-4 w-4 rounded-full border-2 border-gold-400 bg-nuit-950"
               />
-              <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
                 {e.date}
               </p>
-              <h3 className="mt-1 text-lg font-semibold">{e.titre}</h3>
-              <p className="mt-2 text-neutral-600 dark:text-neutral-400">{e.texte}</p>
+              <h3 className="mt-1 text-lg font-semibold text-gold-100">{e.titre}</h3>
+              <p className="mt-2 text-neutral-400">{e.texte}</p>
             </li>
           ))}
         </ol>

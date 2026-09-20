@@ -10,7 +10,55 @@ section[id] {
   scroll-margin-top: 5rem;
 }
 
+body {
+  background-color: #050505;
+}
+
+/* Fond « nuit dorée » : halos d'or discrets sur noir profond */
+.fond-nuit {
+  background:
+    radial-gradient(55rem 28rem at 50% -12%, rgba(212, 175, 55, 0.09), transparent 60%),
+    radial-gradient(38rem 22rem at 88% 14%, rgba(212, 175, 55, 0.05), transparent 65%),
+    radial-gradient(42rem 26rem at 6% 42%, rgba(212, 175, 55, 0.04), transparent 65%),
+    #050505;
+}
+
 ::selection {
-  background: #2563eb;
-  color: #fff;
+  background: #d4af37;
+  color: #050505;
+}
+
+/* Barre de défilement assortie */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0a08;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a2f0e;
+  border-radius: 999px;
+  border: 2px solid #0b0a08;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8a6d20;
+}
+
+/* Filet doré fin sous les titres de section */
+.filet-dore::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  margin-top: 0.9rem;
+  background: linear-gradient(90deg, #d4af37 0%, rgba(212, 175, 55, 0.1) 100%);
+}
+
+.filet-dore-centre::after {
+  content: "";
+  display: block;
+  width: 6rem;
+  height: 1px;
+  margin: 0.9rem auto 0;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
 }

@@ -9,7 +9,7 @@ Construit avec **Next.js 15 + TypeScript + Tailwind CSS**, suivant la méthode
 
 ## 🧩 Sections (one-page)
 
-`Header` (fixe, blur, burger mobile, bascule 🌙/☀️) → `Hero` → `About` →
+`Header` (fixe, blur, burger mobile) → `Hero` → `About` →
 `Skills` → `Projects` → `Experience` → `Contact` → `Footer`
 
 - **Hero** : nom + slogan « Étudier le jour, Booyah la nuit. » + CTA

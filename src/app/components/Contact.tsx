@@ -11,14 +11,16 @@ export default function Contact() {
   return (
     <section id="contact" className="px-6 py-24">
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl font-bold">Travaillons ensemble&nbsp;?</h2>
-        <p className="mt-4 text-neutral-600 dark:text-neutral-400">
+        <h2 className="filet-dore-centre font-serif text-3xl font-bold text-neutral-100">
+          Travaillons ensemble&nbsp;?
+        </h2>
+        <p className="mt-6 text-neutral-400">
           Pour une squad, un projet de code, un lab systèmes — ou juste discuter
           stratégie et stoïcisme : ma porte (et mon lobby) est toujours ouverte.
         </p>
         <a
           href={`mailto:${CONTACTS.email}`}
-          className="mt-8 inline-block rounded-full bg-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-500"
+          className="mt-8 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-8 py-4 text-sm font-semibold text-nuit-950 shadow-or transition hover:brightness-110"
         >
           ✉️ {CONTACTS.email}
         </a>
@@ -30,16 +32,16 @@ export default function Contact() {
                 href={r.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl border border-neutral-200 bg-white p-4 text-left transition hover:border-blue-500/60 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
+                className="flex items-center gap-4 rounded-2xl border border-gold-500/15 bg-nuit-950/70 p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-gold-500/40 hover:shadow-or"
               >
-                <span aria-hidden="true" className="text-2xl">{r.icone}</span>
+                <span aria-hidden="true" className="text-2xl text-gold-400">{r.icone}</span>
                 <span>
-                  <span className="block font-semibold">{r.label}</span>
-                  <span className="block text-sm text-neutral-500 dark:text-neutral-400">
+                  <span className="block font-semibold text-gold-100">{r.label}</span>
+                  <span className="block text-sm text-neutral-400">
                     {r.detail}
                   </span>
                 </span>
-                <span aria-hidden="true" className="ml-auto text-blue-600 dark:text-blue-400">→</span>
+                <span aria-hidden="true" className="ml-auto text-gold-400">→</span>
               </a>
             </li>
           ))}
