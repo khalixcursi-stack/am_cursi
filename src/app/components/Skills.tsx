@@ -1,95 +1,26 @@
-import {
-  IconeCode,
-  IconeGamepad,
-  IconeGlobe,
-  IconeTerminal,
-} from "./Icones";
-import Reveal from "./Reveal";
+import { IconCode, IconGlobe, IconServer, IconGamepad } from "./icons";
 
 const categories = [
-  {
-    titre: "Langages & code",
-    icone: IconeCode,
-    skills: [
-      "C++ · POO (classes, pointeurs, mémoire)",
-      "SQL · jointures, normalisation",
-      "Modélisation Entité-Association",
-      "HTML",
-      "CSS",
-      "JavaScript / TypeScript",
-    ],
-  },
-  {
-    titre: "Frameworks & web",
-    icone: IconeGlobe,
-    skills: ["React", "Next.js", "Tailwind CSS", "Vibe coding"],
-  },
-  {
-    titre: "Systèmes & réseaux",
-    icone: IconeTerminal,
-    skills: [
-      "Arch Linux",
-      "Ubuntu Server",
-      "Kali Linux",
-      "Windows Server 2022",
-      "SFTP / OpenSSH",
-      "GRUB",
-      "VirtualBox / VMware",
-      "Partages réseau",
-    ],
-  },
-  {
-    titre: "Outils & gamer",
-    icone: IconeGamepad,
-    skills: [
-      "VS Code + MinGW/MSYS2",
-      "Git & GitHub",
-      "Arduino / SimulIDE",
-      "Shizuku / Brevent",
-      "Free Fire · HUD & sensibilité",
-      "Craftland Studio",
-      "Xbox One",
-    ],
-  },
+  { title: "Langages & code", icon: IconCode, skills: ["C++ · POO (classes, pointeurs, mémoire)", "SQL · jointures, normalisation", "Modélisation Entité-Association", "HTML", "CSS", "JavaScript-TypeScript"] },
+  { title: "Frameworks & web", icon: IconGlobe, skills: ["React", "Next.js", "Tailwind CSS", "Vibe coding"] },
+  { title: "Systèmes & réseaux", icon: IconServer, skills: ["Arch Linux", "Ubuntu Server", "Kali Linux", "Windows Server 2022", "SFTP", "OpenSSH", "GRUB", "VirtualBox", "VMware", "Partages réseau"] },
+  { title: "Outils & gamer", icon: IconGamepad, skills: ["VS Code + MinGW/MSYS2", "Git & GitHub", "Arduino", "SimulIDE", "Shizuku", "Brevent", "Free Fire · HUD & sensibilité", "Craftland Studio", "Xbox One"] },
 ];
 
 export default function Skills() {
   return (
-    <section id="competences" className="border-y border-gold-500/10 bg-nuit-900/40 px-6 py-24">
+    <section id="competences" className="bg-white/60 px-6 py-24 dark:bg-encre md:py-28">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <h2 className="filet-dore font-serif text-3xl font-bold text-neutral-100">
-            Compétences
-          </h2>
-          <p className="mt-5 max-w-2xl text-neutral-400">
-            Classées par domaine — ce que je pratique à l'université, au lab et en jeu.
-          </p>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {categories.map((cat, i) => (
-            <Reveal key={cat.titre} delai={i * 90} className="h-full">
-              <div className="h-full rounded-2xl border border-gold-500/15 bg-nuit-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-or">
-                <h3 className="flex items-center gap-3 text-lg font-semibold text-gold-100">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400"
-                  >
-                    <cat.icone className="h-5 w-5" />
-                  </span>
-                  {cat.titre}
-                </h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {cat.skills.map((s) => (
-                    <li
-                      key={s}
-                      className="rounded-full border border-gold-500/15 bg-gold-500/10 px-3.5 py-1.5 text-sm text-gold-100/80"
-                    >
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">02 · Compétences</p>
+        <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">Trois terrains d&apos;entraînement.</h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {categories.map(({ title, icon: Icon, skills }) => (
+            <article key={title} className="border border-gold/20 bg-ivoire p-7 dark:bg-nuit">
+              <h3 className="flex items-center gap-4 font-serif text-2xl"><Icon className="h-6 w-6 shrink-0 text-gold" />{title}</h3>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {skills.map(skill => <li key={skill} className="rounded-full border border-gold/25 px-3 py-1.5 text-sm">{skill}</li>)}
+              </ul>
+            </article>
           ))}
         </div>
       </div>

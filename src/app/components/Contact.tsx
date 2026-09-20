@@ -1,73 +1,30 @@
 import { CONTACTS } from "../data";
-import {
-  IconeAppareilPhoto,
-  IconeFlecheDroite,
-  IconeGamepad,
-  IconeGitHub,
-  IconeMail,
-  IconeTelephone,
-} from "./Icones";
-import Reveal from "./Reveal";
+import { IconMail, IconUsers, IconMessage, IconInstagram, IconGithub, IconArrowRight } from "./icons";
 
-const reseaux = [
-  { label: "Discord", detail: "Serveur info & prog", href: CONTACTS.discord, icone: IconeGamepad },
-  { label: "WhatsApp", detail: "Discussion directe", href: CONTACTS.whatsapp, icone: IconeTelephone },
-  { label: "Instagram", detail: "@zzz_cursi", href: CONTACTS.instagram, icone: IconeAppareilPhoto },
-  { label: "GitHub", detail: "Le code de ce site", href: CONTACTS.github, icone: IconeGitHub },
+const links = [
+  { label: "Discord", description: "Serveur info & prog", href: CONTACTS.discord, icon: IconUsers },
+  { label: "WhatsApp", description: "Discussion directe", href: CONTACTS.whatsapp, icon: IconMessage },
+  { label: "Instagram", description: "@zzz_cursi", href: CONTACTS.instagram, icon: IconInstagram },
+  { label: "GitHub", description: "Le code de ce site", href: CONTACTS.github, icon: IconGithub },
 ];
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-6 py-24">
-      <div className="mx-auto max-w-3xl text-center">
-        <Reveal>
-          <h2 className="filet-dore-centre font-serif text-3xl font-bold text-neutral-100">
-            Travaillons ensemble&nbsp;?
-          </h2>
-          <p className="mt-6 text-neutral-400">
-            Pour une squad, un projet de code, un lab systèmes — ou juste discuter
-            stratégie et stoïcisme : ma porte (et mon lobby) est toujours ouverte.
-          </p>
-        </Reveal>
-        <Reveal delai={130}>
-          <a
-            href={`mailto:${CONTACTS.email}`}
-            className="bouton-or mt-8 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-8 py-4 text-sm font-semibold text-nuit-950 shadow-or transition hover:brightness-110"
-          >
-            <IconeMail className="h-5 w-5" />
-            {CONTACTS.email}
-          </a>
-        </Reveal>
-        <Reveal delai={230}>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-            {reseaux.map((r) => (
-              <li key={r.label}>
-                <a
-                  href={r.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-2xl border border-gold-500/15 bg-nuit-950/70 p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-gold-500/40 hover:shadow-or"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400"
-                  >
-                    <r.icone className="h-5 w-5" />
-                  </span>
-                  <span>
-                    <span className="block font-semibold text-gold-100">{r.label}</span>
-                    <span className="block text-sm text-neutral-400">
-                      {r.detail}
-                    </span>
-                  </span>
-                  <span aria-hidden="true" className="ml-auto text-gold-400">
-                    <IconeFlecheDroite className="h-5 w-5" />
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+    <section id="contact" className="px-6 py-24 text-center md:py-28">
+      <div className="mx-auto max-w-3xl">
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">05 · Contact</p>
+        <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">On joue une partie ?</h2>
+        <p className="mx-auto mt-6 max-w-2xl leading-relaxed opacity-80">Pour une squad, un projet de code, un lab systèmes — ou juste discuter stratégie et stoïcisme : ma porte (et mon lobby) est toujours ouverte.</p>
+        <a href={`mailto:${CONTACTS.email}`} className="mt-8 inline-flex max-w-full items-center justify-center gap-3 border border-gold bg-gold px-5 py-4 text-sm text-[#14100a] transition-colors hover:bg-transparent hover:text-gold sm:px-8"><IconMail className="h-5 w-5 shrink-0" />{CONTACTS.email}</a>
+        <div className="mt-12 grid grid-cols-2 gap-3 text-left sm:gap-4">
+          {links.map(({ label, description, href, icon: Icon }) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="group flex flex-wrap items-center gap-3 border border-gold/20 p-4 transition-colors hover:border-gold/60 sm:flex-nowrap sm:p-6">
+              <Icon className="h-6 w-6 shrink-0 text-gold" />
+              <div className="min-w-0 flex-1 basis-20"><p className="font-serif text-xl sm:text-2xl">{label}</p><p className="mt-1 text-xs opacity-70 sm:text-sm">{description}</p></div>
+              <IconArrowRight className="h-4 w-4 shrink-0 text-gold transition-transform group-hover:translate-x-1" />
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

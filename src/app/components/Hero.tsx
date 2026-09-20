@@ -1,88 +1,20 @@
 import { FREE_FIRE, IDENTITE } from "../data";
-import { IconeEtoile } from "./Icones";
 
 export default function Hero() {
   return (
-    <section id="hero" className="flex min-h-screen items-center justify-center px-6 pt-16">
-      <div className="mx-auto max-w-3xl text-center">
-        <p
-          className="anim-fondu text-xs uppercase tracking-[0.35em] text-gold-400/90"
-          style={{ animationDelay: "0.1s" }}
-        >
-          {IDENTITE.ville} · 2026
-        </p>
-        <h1
-          className="anim-apparition mt-6 font-serif text-5xl font-bold tracking-tight text-neutral-100 md:text-7xl"
-          style={{ animationDelay: "0.25s" }}
-        >
-          Bonjour, je suis{" "}
-          <span className="bg-gradient-to-r from-gold-200 via-gold-400 to-gold-600 bg-clip-text text-transparent">
-            {IDENTITE.prenom}
-          </span>
-        </h1>
-        <p
-          className="anim-apparition mt-5 text-lg text-neutral-400 md:text-xl"
-          style={{ animationDelay: "0.45s" }}
-        >
-          Étudiant en {IDENTITE.etudes}, développeur en devenir — et joueur
-          Free Fire {FREE_FIRE.rang} depuis {FREE_FIRE.depuis}.
-        </p>
-
-        <div
-          className="anim-apparition mt-6 flex items-center justify-center gap-4"
-          style={{ animationDelay: "0.6s" }}
-        >
-          <span
-            aria-hidden="true"
-            className="hidden h-px w-14 bg-gradient-to-r from-transparent to-gold-500/70 sm:block"
-          />
-          <p className="flex items-center gap-3 font-serif text-lg italic text-gold-300">
-            <IconeEtoile className="h-3 w-3 text-gold-500" />
-            {IDENTITE.devise}
-            <IconeEtoile className="h-3 w-3 text-gold-500" />
-          </p>
-          <span
-            aria-hidden="true"
-            className="hidden h-px w-14 bg-gradient-to-l from-transparent to-gold-500/70 sm:block"
-          />
+    <section id="hero" className="flex min-h-screen items-center justify-center px-6 pb-20 pt-36 text-center">
+      <div className="mx-auto max-w-4xl">
+        <p className="text-xs uppercase leading-loose tracking-[0.4em] text-gold">{IDENTITE.ville} · 2026</p>
+        <h1 className="mt-8 font-serif text-6xl font-normal leading-[1.08] md:text-8xl">Bonjour, je suis <em className="italic text-gold">Cursi</em>.</h1>
+        <p className="mx-auto mt-7 max-w-2xl text-lg font-light leading-relaxed opacity-80">Étudiant en Licence 1 Informatique, développeur en devenir — et joueur Free Fire Élite Héroïque depuis 2019.</p>
+        <p className="mx-auto mt-8 max-w-2xl font-serif text-2xl italic leading-relaxed text-gold">« {IDENTITE.slogan} »</p>
+        <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+          <a href="#projets" className="border border-gold bg-gold px-8 py-3.5 text-sm text-[#14100a] transition-colors hover:bg-transparent hover:text-gold">Voir mes projets</a>
+          <a href="#contact" className="border border-gold/40 px-8 py-3.5 text-sm transition-colors hover:border-gold hover:text-gold">Me contacter</a>
         </div>
-
-        <div
-          className="anim-apparition mt-9 flex flex-wrap items-center justify-center gap-4"
-          style={{ animationDelay: "0.75s" }}
-        >
-          <a
-            href="#projets"
-            className="bouton-or rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-7 py-3.5 text-sm font-semibold text-nuit-950 shadow-or transition hover:brightness-110"
-          >
-            Voir mes projets
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-gold-500/40 px-7 py-3.5 text-sm font-semibold text-gold-300 transition hover:border-gold-400 hover:bg-gold-500/10"
-          >
-            Me contacter
-          </a>
-        </div>
-
-        <div
-          className="anim-apparition mt-10 flex flex-wrap items-center justify-center gap-2 text-xs"
-          style={{ animationDelay: "0.9s" }}
-        >
-          {[
-            `${IDENTITE.age} ans`,
-            IDENTITE.etudes,
-            FREE_FIRE.rang,
-            `Clan ${FREE_FIRE.clan}`,
-          ].map((c) => (
-            <span
-              key={c}
-              className="rounded-full border border-gold-500/25 bg-gold-500/5 px-3 py-1.5 text-gold-200/80"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+        <ul className="mt-12 flex flex-wrap justify-center gap-3">
+          {[`${IDENTITE.age} ans`, IDENTITE.etudes, FREE_FIRE.rang, `Clan ${FREE_FIRE.clan}`].map(chip => <li key={chip} className="rounded-full border border-gold/25 px-4 py-1.5 text-xs">{chip}</li>)}
+        </ul>
       </div>
     </section>
   );
