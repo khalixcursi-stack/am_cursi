@@ -1,6 +1,5 @@
 /* ============================================================
-   Zzz_cursi — Portfolio-livre (v3)
-   Couverture → Présentation → Compétences → Contact
+   Zzz_cursi — Site personnel (v4, défilement classique)
    ============================================================ */
 
 (function () {
@@ -24,82 +23,6 @@
     toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2400);
   }
 
-  /* ============================================================
-     NAVIGATION « LIVRE » : couverture + 3 pages
-     ============================================================ */
-  var pages = $$(".book-page");
-  var order = pages.map(function (p) { return p.getAttribute("data-page"); });
-  var current = order[0];
-
-  function showPage(id) {
-    if (order.indexOf(id) === -1) id = order[0];
-    current = id;
-    pages.forEach(function (p) {
-      var on = p.getAttribute("data-page") === id;
-      if (on) {
-        if (!p.classList.contains("active")) {
-          p.classList.remove("active");
-          void p.offsetWidth; /* relance l'animation d'entrée */
-          p.classList.add("active");
-        }
-      } else {
-        p.classList.remove("active");
-      }
-    });
-    $$(".nav-links a").forEach(function (a) {
-      a.classList.toggle("active", a.getAttribute("data-goto") === id);
-    });
-    window.scrollTo(0, 0);
-    try {
-      history.replaceState(null, "", "#" + id);
-    } catch (e) {
-      location.hash = id;
-    }
-  }
-
-  /* Menu mobile */
-  var burger = $("#burger");
-  var navLinks = $("#navLinks");
-  function closeMenu() {
-    navLinks.classList.remove("open");
-    burger.classList.remove("open");
-    burger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-  }
-  burger.addEventListener("click", function () {
-    var open = navLinks.classList.toggle("open");
-    burger.classList.toggle("open", open);
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-    document.body.style.overflow = open ? "hidden" : "";
-  });
-
-  /* Tous les liens/boutons data-goto changent de page */
-  document.addEventListener("click", function (e) {
-    var t = e.target.closest("[data-goto]");
-    if (t) {
-      e.preventDefault();
-      showPage(t.getAttribute("data-goto"));
-      closeMenu();
-    }
-  });
-
-  window.addEventListener("hashchange", function () {
-    showPage(location.hash.replace("#", ""));
-  });
-
-  /* Flèches clavier = tourner les pages */
-  document.addEventListener("keydown", function (e) {
-    if (e.target.matches("input, textarea")) return;
-    var lightbox = $("#lightbox");
-    if (lightbox && !lightbox.hidden) return;
-    var i = order.indexOf(current);
-    if (e.key === "ArrowRight" && i > -1 && i < order.length - 1) showPage(order[i + 1]);
-    if (e.key === "ArrowLeft" && i > 0) showPage(order[i - 1]);
-  });
-
-  /* Page initiale selon l'ancre */
-  showPage(location.hash.replace("#", "") || "couverture");
-
   /* ---------- Navigation : fond au défilement + retour haut ---------- */
   var nav = $("#nav");
   var toTop = $("#toTop");
@@ -110,6 +33,46 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
   if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+  /* ---------- Menu mobile ---------- */
+  var burger = $("#burger");
+  var navLinks = $("#navLinks");
+  burger.addEventListener("click", function () {
+    var open = navLinks.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  navLinks.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      navLinks.classList.remove("open");
+      burger.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+  });
+
+  /* ---------- Lien de navigation actif selon la section visible ---------- */
+  var sections = $$("section[id]");
+  var links = $$(".nav-links a");
+  if ("IntersectionObserver" in window && sections.length) {
+    var sectionObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            links.forEach(function (link) {
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") === "#" + entry.target.id
+              );
+            });
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+    sections.forEach(function (section) { sectionObserver.observe(section); });
+  }
 
   /* ---------- Apparition des éléments au défilement ---------- */
   var reveals = $$(".reveal");
@@ -149,7 +112,7 @@
     bars.forEach(function (bar) { bar.classList.add("animate"); });
   }
 
-  /* ---------- Compteurs animés (format corrigé : espaces régulières) ---------- */
+  /* ---------- Compteurs animés (format lisible) ---------- */
   function fmt(n) {
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
@@ -278,7 +241,7 @@
         return;
       }
 
-      var subject = "Message du site vitrine — " + nom.value.trim();
+      var subject = "Message du site personnel — " + nom.value.trim();
       var body =
         "Bonjour ᴄᴜʀs,\n\n" +
         msg.value.trim() +
