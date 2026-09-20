@@ -1,16 +1,15 @@
 /* ============================================================
-   Zzz_cursi — Interactions du site vitrine (v2, fonctionnel)
+   Zzz_cursi — Portfolio-livre (v3)
+   Couverture → Présentation → Compétences → Contact
    ============================================================ */
 
 (function () {
   "use strict";
 
-  /* ---------- Utilitaires ---------- */
-
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
-  /* --- Année courante --- */
+  /* ---------- Année courante ---------- */
   var yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -25,6 +24,82 @@
     toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2400);
   }
 
+  /* ============================================================
+     NAVIGATION « LIVRE » : couverture + 3 pages
+     ============================================================ */
+  var pages = $$(".book-page");
+  var order = pages.map(function (p) { return p.getAttribute("data-page"); });
+  var current = order[0];
+
+  function showPage(id) {
+    if (order.indexOf(id) === -1) id = order[0];
+    current = id;
+    pages.forEach(function (p) {
+      var on = p.getAttribute("data-page") === id;
+      if (on) {
+        if (!p.classList.contains("active")) {
+          p.classList.remove("active");
+          void p.offsetWidth; /* relance l'animation d'entrée */
+          p.classList.add("active");
+        }
+      } else {
+        p.classList.remove("active");
+      }
+    });
+    $$(".nav-links a").forEach(function (a) {
+      a.classList.toggle("active", a.getAttribute("data-goto") === id);
+    });
+    window.scrollTo(0, 0);
+    try {
+      history.replaceState(null, "", "#" + id);
+    } catch (e) {
+      location.hash = id;
+    }
+  }
+
+  /* Menu mobile */
+  var burger = $("#burger");
+  var navLinks = $("#navLinks");
+  function closeMenu() {
+    navLinks.classList.remove("open");
+    burger.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+  burger.addEventListener("click", function () {
+    var open = navLinks.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+
+  /* Tous les liens/boutons data-goto changent de page */
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-goto]");
+    if (t) {
+      e.preventDefault();
+      showPage(t.getAttribute("data-goto"));
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("hashchange", function () {
+    showPage(location.hash.replace("#", ""));
+  });
+
+  /* Flèches clavier = tourner les pages */
+  document.addEventListener("keydown", function (e) {
+    if (e.target.matches("input, textarea")) return;
+    var lightbox = $("#lightbox");
+    if (lightbox && !lightbox.hidden) return;
+    var i = order.indexOf(current);
+    if (e.key === "ArrowRight" && i > -1 && i < order.length - 1) showPage(order[i + 1]);
+    if (e.key === "ArrowLeft" && i > 0) showPage(order[i - 1]);
+  });
+
+  /* Page initiale selon l'ancre */
+  showPage(location.hash.replace("#", "") || "couverture");
+
   /* ---------- Navigation : fond au défilement + retour haut ---------- */
   var nav = $("#nav");
   var toTop = $("#toTop");
@@ -34,30 +109,7 @@
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
-
-  if (toTop) {
-    toTop.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-
-  /* ---------- Menu mobile ---------- */
-  var burger = $("#burger");
-  var navLinks = $("#navLinks");
-  burger.addEventListener("click", function () {
-    var open = navLinks.classList.toggle("open");
-    burger.classList.toggle("open", open);
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-    document.body.style.overflow = open ? "hidden" : "";
-  });
-  navLinks.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") {
-      navLinks.classList.remove("open");
-      burger.classList.remove("open");
-      burger.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    }
-  });
+  if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
 
   /* ---------- Apparition des éléments au défilement ---------- */
   var reveals = $$(".reveal");
@@ -71,7 +123,7 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
     );
     reveals.forEach(function (el) { revealObserver.observe(el); });
   } else {
@@ -97,19 +149,21 @@
     bars.forEach(function (bar) { bar.classList.add("animate"); });
   }
 
-  /* ---------- Compteurs animés (statistiques) ---------- */
+  /* ---------- Compteurs animés (format corrigé : espaces régulières) ---------- */
+  function fmt(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
   function animateCount(el) {
     var target = parseInt(el.getAttribute("data-count"), 10);
     var suffix = el.getAttribute("data-suffix") || "";
-    if (isNaN(target)) return;
+    if (isNaN(target)) { return; }
     var duration = 1600;
     var start = null;
     function step(ts) {
       if (!start) start = ts;
       var p = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3); /* easeOutCubic */
-      var value = Math.round(target * eased);
-      el.textContent = value.toLocaleString("fr-FR").replace(/ /g, " ") + (p === 1 ? suffix : "");
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased)) + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -125,35 +179,13 @@
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.5 }
     );
     counters.forEach(function (el) { countObserver.observe(el); });
   } else {
     counters.forEach(function (el) {
-      el.textContent = parseInt(el.getAttribute("data-count"), 10) + (el.getAttribute("data-suffix") || "");
+      el.textContent = fmt(parseInt(el.getAttribute("data-count"), 10)) + (el.getAttribute("data-suffix") || "");
     });
-  }
-
-  /* ---------- Lien de navigation actif selon la section visible ---------- */
-  var sections = $$("section[id]");
-  var links = $$(".nav-links a");
-  if ("IntersectionObserver" in window && sections.length) {
-    var sectionObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            links.forEach(function (link) {
-              link.classList.toggle(
-                "active",
-                link.getAttribute("href") === "#" + entry.target.id
-              );
-            });
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    );
-    sections.forEach(function (section) { sectionObserver.observe(section); });
   }
 
   /* ---------- Copier dans le presse-papiers (UID, e-mail) ---------- */
@@ -212,11 +244,7 @@
     });
   });
   if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener("click", function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
+  if (lightbox) lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
   });
@@ -267,7 +295,6 @@
       setTimeout(function () { form.reset(); formNote.textContent = ""; }, 1500);
     });
 
-    /* Nettoie l'erreur dès que l'utilisateur retape */
     $$("#contactForm input, #contactForm textarea").forEach(function (field) {
       field.addEventListener("input", function () { setInvalid(field, false); });
     });

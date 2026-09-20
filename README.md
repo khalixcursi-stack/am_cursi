@@ -1,27 +1,33 @@
 # cursi_presentation
 
-Site vitrine personnel de **Zzz_cursi (ᴄᴜʀsɪ)** — 19 ans, étudiant en informatique à
-Brazzaville, joueur Free Fire **Élite Héroïque** du clan **ɴᴏᴛ ɪᴋ s**.
+Portfolio-livre de **Zzz_cursi (ᴄᴜʀsɪ)** — 19 ans, étudiant en informatique à
+Brazzaville, joueur Free Fire **Élite Héroïque** du clan **ɴᴏᴛ ʟɪᴋᴇ ᴜs**,
+sur le jeu depuis **2019**.
 
-## Sections
+## Format « livre »
 
-- **À propos** — présentation, statistiques animées (2 500+ h, 5 000+ Booyahs), UID copiable
-- **Compétences** — côté gamer et côté étudiant, barres animées
-- **Parcours** — chronologie études + progression Free Fire
-- **Projets** — clan ɴᴏᴛ ʟɪᴋᴇ ᴜs, Road to Grandmaster, guides
-- **Moments** — galerie d'images avec visionneuse (lightbox)
-- **Contact** — formulaire fonctionnel (validation + e-mail prérempli), liens directs
-  (e-mail, Discord, WhatsApp, Instagram) et bouton copier l'adresse
+- **Couverture** — « Bienvenue dans le portfolio de ᴄᴜʀs » + bouton *Découvrir mon univers*
+- **Page 1 · Présentation** — personnage Free Fire, fiche d'infos (pseudo, âge, ville,
+  études, clan, rang, UID copiable), compteurs animés (2 500+ h, 5 000+ Booyahs),
+  chronologie depuis 2019
+- **Page 2 · Compétences** — académiques (C++ excellent, bases de données moyen,
+  vibe coding à fond) + gamer, projets en cours, emplacement pour capture de
+  performances + galerie avec visionneuse
+- **Page 3 · Contact** — formulaire fonctionnel + liens directs
+  (e-mail, Discord, WhatsApp, Instagram)
+
+Navigation : onglets de chapitres, boutons précédent/suivant en bas de page,
+flèches ← → du clavier, ancres (#presentation, #competences, #contact).
 
 ## Fonctionnalités
 
 - 100 % statique, sans dépendance — HTML/CSS/JS vanilla
 - Design élégant sombre & doré (Cormorant Garamond + Jost)
-- Responsive (menu burger mobile), animations au scroll
-- Compteurs animés, copie presse-papiers avec notification (toast)
+- Responsive (menu burger mobile), animations d'entrée de page et au scroll
+- Compteurs animés au format lisible, copie presse-papiers avec toast
 - Visionneuse d'images (clic, Échap, clic extérieur)
 - Formulaire de contact avec validation et ouverture de la messagerie
-- Bouton retour haut de page, lien de navigation actif
+- Bouton retour haut de page
 
 ## Lancer en local
 
@@ -38,6 +44,6 @@ cursi_presentation/
 ├── assets/
 │   ├── css/style.css
 │   ├── js/main.js
-│   └── img/            (emblem.png, moment-1.jpg, moment-2.jpg, clan-emblem.jpg)
+│   └── img/   (emblem, personnage, moment-1/2, clan-emblem)
 └── README.md
 ```

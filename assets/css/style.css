@@ -744,3 +744,128 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; }
 @media (max-width: 560px) {
   .uid-clan { margin-left: 0; width: 100%; }
 }
+
+/* ============================================================
+   Format « livre » (v3) : couverture + pages tournées
+   ============================================================ */
+
+.book-page { display: none; min-height: 100vh; }
+.book-page.active { display: block; animation: pageIn 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+.page-body { padding: 8.5rem 0 5rem; }
+@media (max-width: 720px) { .page-body { padding: 7rem 0 4rem; } }
+
+/* ---------- Couverture ---------- */
+
+.book-page.cover.active { display: flex; align-items: center; justify-content: center; }
+.cover {
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 10%, rgba(211, 169, 79, 0.1), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 85% 90%, rgba(211, 169, 79, 0.05), transparent 70%),
+    var(--bg);
+}
+.cover-content { padding: 7rem 0 5rem; }
+.cover-title {
+  font-size: clamp(2.5rem, 7vw, 5.2rem);
+  font-weight: 600;
+  margin: 1.5rem 0 0.9rem;
+}
+.cover-title em { color: var(--gold); font-style: italic; }
+.cover-hint {
+  margin-top: 1.4rem;
+  color: var(--muted);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+}
+.cover-scroll-line {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+/* ---------- Pagination bas de page ---------- */
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.page-ind {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* ---------- Fiche d'informations ---------- */
+
+.info-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem 2.2rem;
+  margin: 2.4rem 0 0;
+}
+.info-item { border-left: 1px solid var(--line); padding-left: 1.1rem; }
+.info-item dt {
+  font-size: 0.64rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.info-item dd {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  color: var(--ink);
+  margin-top: 0.2rem;
+}
+.uid-inline { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+.uid-inline code { color: var(--gold); font-size: 1.05rem; letter-spacing: 0.06em; }
+@media (max-width: 560px) { .info-list { grid-template-columns: 1fr; } }
+
+/* ---------- Puces « en ce moment » ---------- */
+
+.now-chips { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 3rem 0 0; }
+.now-chip {
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.now-chip b { color: var(--gold); font-weight: 500; margin-right: 0.3rem; }
+
+/* ---------- Bloc performances ---------- */
+
+.perf-block { margin-top: 3.5rem; }
+.perf-slot {
+  border: 1px dashed var(--line);
+  padding: 2.6rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: 1.6rem;
+  background: var(--bg-alt);
+}
+.gallery-small .gallery-item img { height: 240px; }
+
+/* ---------- Chronologie compacte ---------- */
+
+.mini-timeline { margin-top: 4.5rem; max-width: 720px; }
