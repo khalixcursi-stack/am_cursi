@@ -10,7 +10,7 @@ export const IDENTITE = {
   age: 19,
   ville: "Brazzaville, Congo",
   etudes: "Licence 1 Informatique",
-  slogan: "Étudier le jour, Booyah la nuit.",
+  devise: "L'élégance dans le code, la fureur dans l'arène.",
 };
 
 export const FREE_FIRE = {

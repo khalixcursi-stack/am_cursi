@@ -9,10 +9,10 @@ Construit avec **Next.js 15 + TypeScript + Tailwind CSS**, suivant la méthode
 
 ## 🧩 Sections (one-page)
 
-`Header` (fixe, blur, burger mobile, bascule 🌙/☀️) → `Hero` → `About` →
+`Header` (fixe, blur, burger mobile) → `Hero` → `About` →
 `Skills` → `Projects` → `Experience` → `Contact` → `Footer`
 
-- **Hero** : nom + slogan « Étudier le jour, Booyah la nuit. » + CTA
+- **Hero** : nom + devise « L'élégance dans le code, la fureur dans l'arène. » + CTA
 - **À propos** : présentation, citation de Marc Aurèle, passions (One Piece,
   stoïcisme, Craftland), setup matériel
 - **Compétences** : langages & code (C++ POO, SQL, modélisation E/A…),
@@ -29,6 +29,9 @@ Construit avec **Next.js 15 + TypeScript + Tailwind CSS**, suivant la méthode
 - Thème sombre par défaut + bascule clair/sombre persistée (localStorage)
 - HTML sémantique (header/main/section/footer), un seul `h1`, `alt` partout
 - SEO & Open Graph (`metadata`, `og.png`) pour une belle carte de partage
+- Animations soignées : entrée du Hero en cascade, révélations au scroll
+  (IntersectionObserver), reflet balayant sur les boutons or, paraphe du logo
+  retracé au survol, halo doré animé — avec respect de `prefers-reduced-motion`
 - Zéro dépendance superflue, polices système (build hors-ligne)
 
 ## 🚀 Lancer en local
@@ -59,6 +62,8 @@ cursi_presentation/
 │   └── components/
 │       ├── Header.tsx  Hero.tsx  About.tsx  Skills.tsx
 │       ├── Projects.tsx  Experience.tsx  Contact.tsx  Footer.tsx
+│       ├── Icones.tsx   # jeu d'icônes SVG inline
+│       └── LogoCursi.tsx # logo signature (monogramme + paraphe)
 ├── public/og.png
 ├── tailwind.config.ts · tsconfig.json · next.config.mjs · package.json
 └── README.md

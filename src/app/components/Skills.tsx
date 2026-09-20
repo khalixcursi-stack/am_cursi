@@ -1,7 +1,15 @@
+import {
+  IconeCode,
+  IconeGamepad,
+  IconeGlobe,
+  IconeTerminal,
+} from "./Icones";
+import Reveal from "./Reveal";
+
 const categories = [
   {
     titre: "Langages & code",
-    emoji: "⌨️",
+    icone: IconeCode,
     skills: [
       "C++ · POO (classes, pointeurs, mémoire)",
       "SQL · jointures, normalisation",
@@ -13,12 +21,12 @@ const categories = [
   },
   {
     titre: "Frameworks & web",
-    emoji: "🌐",
+    icone: IconeGlobe,
     skills: ["React", "Next.js", "Tailwind CSS", "Vibe coding"],
   },
   {
     titre: "Systèmes & réseaux",
-    emoji: "🐧",
+    icone: IconeTerminal,
     skills: [
       "Arch Linux",
       "Ubuntu Server",
@@ -32,7 +40,7 @@ const categories = [
   },
   {
     titre: "Outils & gamer",
-    emoji: "🎮",
+    icone: IconeGamepad,
     skills: [
       "VS Code + MinGW/MSYS2",
       "Git & GitHub",
@@ -47,33 +55,41 @@ const categories = [
 
 export default function Skills() {
   return (
-    <section id="competences" className="bg-neutral-50 px-6 py-24 dark:bg-neutral-900/40">
+    <section id="competences" className="border-y border-gold-500/10 bg-nuit-900/40 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-3xl font-bold">Compétences</h2>
-        <p className="mt-3 max-w-2xl text-neutral-600 dark:text-neutral-400">
-          Classées par domaine — ce que je pratique à l'université, au lab et en jeu.
-        </p>
+        <Reveal>
+          <h2 className="filet-dore font-serif text-3xl font-bold text-neutral-100">
+            Compétences
+          </h2>
+          <p className="mt-5 max-w-2xl text-neutral-400">
+            Classées par domaine — ce que je pratique à l'université, au lab et en jeu.
+          </p>
+        </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {categories.map((cat) => (
-            <div
-              key={cat.titre}
-              className="rounded-2xl border border-neutral-200 bg-white p-6 transition hover:border-blue-500/60 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
-            >
-              <h3 className="text-lg font-semibold">
-                <span aria-hidden="true" className="mr-2">{cat.emoji}</span>
-                {cat.titre}
-              </h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {cat.skills.map((s) => (
-                  <li
-                    key={s}
-                    className="rounded-full bg-neutral-100 px-3.5 py-1.5 text-sm text-neutral-700 dark:bg-neutral-900 dark:text-neutral-200"
+          {categories.map((cat, i) => (
+            <Reveal key={cat.titre} delai={i * 90} className="h-full">
+              <div className="h-full rounded-2xl border border-gold-500/15 bg-nuit-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-or">
+                <h3 className="flex items-center gap-3 text-lg font-semibold text-gold-100">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400"
                   >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    <cat.icone className="h-5 w-5" />
+                  </span>
+                  {cat.titre}
+                </h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {cat.skills.map((s) => (
+                    <li
+                      key={s}
+                      className="rounded-full border border-gold-500/15 bg-gold-500/10 px-3.5 py-1.5 text-sm text-gold-100/80"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
