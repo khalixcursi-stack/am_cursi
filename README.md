@@ -1,40 +1,43 @@
 # cursi_presentation
 
-Site vitrine personnel de **Zzz_cursi** — étudiant le jour, gamer sur Free Fire la nuit.
+Site vitrine personnel de **Zzz_cursi (ᴄᴜʀsɪ)** — 19 ans, étudiant en informatique à
+Brazzaville, joueur Free Fire **Élite Héroïque** du clan **ɴᴏᴛ ɪᴋ s**.
 
-## Aperçu
+## Sections
 
-Une page unique au design élégant et typographique (thème sombre, accents dorés, polices Cormorant Garamond & Jost) avec les sections :
+- **À propos** — présentation, statistiques animées (2 500+ h, 5 000+ Booyahs), UID copiable
+- **Compétences** — côté gamer et côté étudiant, barres animées
+- **Parcours** — chronologie études + progression Free Fire
+- **Projets** — clan ɴᴏᴛ ʟɪᴋᴇ ᴜs, Road to Grandmaster, guides
+- **Moments** — galerie d'images avec visionneuse (lightbox)
+- **Contact** — formulaire fonctionnel (validation + e-mail prérempli), liens directs
+  (e-mail, Discord, WhatsApp, Instagram) et bouton copier l'adresse
 
-- **À propos** — présentation et statistiques
-- **Compétences** — côté gamer et côté étudiant
-- **Parcours** — chronologie des études et de la progression sur Free Fire
-- **Projets** — défis, clan et partages
-- **Contact** — e-mail, Discord et réseaux sociaux
+## Fonctionnalités
 
-## Structure
-
-```
-cursi_presentation/
-├── index.html              # Page principale
-├── assets/
-│   ├── css/style.css       # Styles
-│   ├── js/main.js          # Interactions (menu, animations, scroll)
-│   └── img/emblem.png      # Emblème Zzz_cursi
-└── README.md
-```
+- 100 % statique, sans dépendance — HTML/CSS/JS vanilla
+- Design élégant sombre & doré (Cormorant Garamond + Jost)
+- Responsive (menu burger mobile), animations au scroll
+- Compteurs animés, copie presse-papiers avec notification (toast)
+- Visionneuse d'images (clic, Échap, clic extérieur)
+- Formulaire de contact avec validation et ouverture de la messagerie
+- Bouton retour haut de page, lien de navigation actif
 
 ## Lancer en local
-
-Aucune dépendance nécessaire — c'est un site statique. Servez simplement le dossier :
 
 ```bash
 python3 -m http.server 8080
 # puis ouvrir http://localhost:8080
 ```
 
-## Personnalisation
+## Structure
 
-Les éléments à adapter avec vos vraies informations sont dans `index.html` :
-statistiques (heures de jeu, Booyahs), dates du parcours, projets,
-adresse e-mail (`contact@exemple.com`) et liens des réseaux sociaux (`#`).
+```
+cursi_presentation/
+├── index.html
+├── assets/
+│   ├── css/style.css
+│   ├── js/main.js
+│   └── img/            (emblem.png, moment-1.jpg, moment-2.jpg, clan-emblem.jpg)
+└── README.md
+```
