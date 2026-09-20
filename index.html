@@ -12,7 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d0c0a'/%3E%3Ctext x='32' y='44' font-family='Georgia, serif' font-size='38' font-style='italic' fill='%23d3a94f' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -28,6 +28,7 @@
         <a href="#galerie">Galerie</a>
         <a href="#contact" class="nav-cta">Contact</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Passer en thème clair">☀️</button>
       <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -44,7 +45,7 @@
         <p class="hero-tagline reveal">« Étudier le jour, <em>Booyah</em> la nuit. »</p>
         <p class="cover-hint reveal">19 ans · Free Fire depuis 2019 · Clan ɴᴏᴛ ʟɪᴋᴇ ᴜs</p>
         <div class="hero-actions reveal">
-          <a href="#moi" class="btn btn-solid">Découvrir mon univers</a>
+          <a href="#projets" class="btn btn-solid">Voir mes projets</a>
           <a href="#contact" class="btn btn-ghost">Me contacter</a>
         </div>
       </div>
@@ -143,6 +144,12 @@
             <div class="skill-top"><span>Vibe coding</span><span>à fond</span></div>
             <div class="skill-bar"><span style="--w:88%"></span></div>
           </div>
+          <div class="badges">
+            <span class="badge">C++</span><span class="badge">SQL</span>
+            <span class="badge">HTML</span><span class="badge">CSS</span>
+            <span class="badge">JavaScript</span><span class="badge">Git</span>
+            <span class="badge">Vibe coding</span>
+          </div>
         </article>
         <article class="world-card reveal">
           <span class="world-sub">Le jeu</span>
@@ -161,6 +168,10 @@
             <div class="skill-top"><span>Sang-froid en clutch</span><span>90%</span></div>
             <div class="skill-bar"><span style="--w:90%"></span></div>
           </div>
+          <div class="badges">
+            <span class="badge">Précision</span><span class="badge">Rotations</span>
+            <span class="badge">Clutch</span><span class="badge">Squad play</span>
+          </div>
           <div class="now-chips">
             <span class="now-chip"><b>Clan :</b> ɴᴏᴛ ʟɪᴋᴇ ᴜs</span>
             <span class="now-chip"><b>Défi :</b> Road to Grandmaster</span>
@@ -171,11 +182,72 @@
     </div>
   </section>
 
-  <!-- ======= PARCOURS ======= -->
-  <section class="section" id="parcours">
+  <!-- ======= PROJETS ======= -->
+  <section class="section" id="projets">
     <div class="container">
       <div class="section-head reveal">
-        <p class="overline">03 · Parcours</p>
+        <p class="overline">03 · Projets</p>
+        <h2>Ce que je construis, en jeu et en code.</h2>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <img class="project-thumb" src="assets/img/moment-2.jpg" alt="Setup de développement et de jeu" />
+          <div class="project-body">
+            <p class="project-tag">Web · Code</p>
+            <h3>Portfolio personnel — ce site</h3>
+            <p>Mon site personnel fait main : thème sombre/clair, animations au scroll,
+            formulaire de contact et design responsive — sans framework.</p>
+            <div class="badges">
+              <span class="badge">HTML5</span><span class="badge">CSS3</span>
+              <span class="badge">JavaScript</span><span class="badge">Responsive</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/khalixcursi-stack/cursi_presentation" target="_blank" rel="noopener">Code source ↗</a>
+              <a class="project-link" href="https://khalixcursi-stack.github.io/cursi_presentation/" target="_blank" rel="noopener">Démo en ligne ↗</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <img class="project-thumb" src="assets/img/clan-emblem.jpg" alt="Emblème du clan ɴᴏᴛ ʟɪᴋ s" />
+          <div class="project-body">
+            <p class="project-tag">Esport amateur</p>
+            <h3>Clan ɴᴏᴛ ʟɪᴋᴇ ᴜs</h3>
+            <p>Guerres de clans, tactiques et cohésion de squad :
+            on ne ressemble à personne — c'est voulu.</p>
+            <div class="badges">
+              <span class="badge">Free Fire</span><span class="badge">Guerre de clans</span>
+              <span class="badge">Squad</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://discord.gg/W7S3YdKE" target="_blank" rel="noopener">Rejoindre ↗</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <img class="project-thumb" src="assets/img/moment-1.jpg" alt="Silhouette de joueur Free Fire baignée de lumière dorée" />
+          <div class="project-body">
+            <p class="project-tag">Défi · Contenu</p>
+            <h3>Road to Grandmaster</h3>
+            <p>Élite Héroïque n'est qu'une étape : entraînement ciblé,
+            review de parties et progression mesurée vers le sommet.</p>
+            <div class="badges">
+              <span class="badge">Free Fire</span><span class="badge">Classé</span>
+              <span class="badge">Discipline</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://www.instagram.com/zzz_cursi" target="_blank" rel="noopener">Suivre ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= PARCOURS ======= -->
+  <section class="section section-alt" id="parcours">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="overline">04 · Parcours</p>
         <h2>Une trajectoire, deux arènes.</h2>
       </div>
       <div class="timeline">
@@ -205,10 +277,10 @@
   </section>
 
   <!-- ======= GALERIE ======= -->
-  <section class="section section-alt" id="galerie">
+  <section class="section" id="galerie">
     <div class="container">
       <div class="section-head reveal">
-        <p class="overline">04 · Galerie</p>
+        <p class="overline">05 · Galerie</p>
         <h2>Mon univers en images.</h2>
       </div>
       <div class="perf-slot reveal">
@@ -236,10 +308,10 @@
   </section>
 
   <!-- ======= CONTACT ======= -->
-  <section class="section contact" id="contact">
+  <section class="section section-alt contact" id="contact">
     <div class="container">
       <div class="section-head reveal">
-        <p class="overline">05 · Contact</p>
+        <p class="overline">06 · Contact</p>
         <h2>On joue une partie&nbsp;?</h2>
         <p class="contact-lead">Pour une squad, un projet, une question — ou juste pour discuter stratégie :
         ma porte (et mon lobby) est toujours ouverte.</p>
@@ -286,6 +358,11 @@
           <a class="direct-link" href="https://www.instagram.com/zzz_cursi" target="_blank" rel="noopener">
             <span class="direct-icon">📸</span>
             <span class="direct-body"><strong>Instagram</strong><small>@zzz_cursi</small></span>
+            <span class="direct-arrow">→</span>
+          </a>
+          <a class="direct-link" href="https://github.com/khalixcursi-stack/cursi_presentation" target="_blank" rel="noopener">
+            <span class="direct-icon">🐙</span>
+            <span class="direct-body"><strong>GitHub</strong><small>Le code de ce site</small></span>
             <span class="direct-arrow">→</span>
           </a>
           <div class="copy-line">

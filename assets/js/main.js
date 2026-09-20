@@ -12,6 +12,34 @@
   var yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- Thème sombre / clair (persisté) ---------- */
+  var rootEl = document.documentElement;
+  var themeToggle = $("#themeToggle");
+  function applyThemeIcon() {
+    if (!themeToggle) return;
+    var light = rootEl.getAttribute("data-theme") === "light";
+    themeToggle.textContent = light ? "🌙" : "☀️";
+    themeToggle.setAttribute("aria-label", light ? "Passer en thème sombre" : "Passer en thème clair");
+  }
+  try {
+    if (localStorage.getItem("theme") === "light") rootEl.setAttribute("data-theme", "light");
+  } catch (e) { /* stockage indisponible */ }
+  applyThemeIcon();
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var light = rootEl.getAttribute("data-theme") === "light";
+      if (light) {
+        rootEl.removeAttribute("data-theme");
+        try { localStorage.setItem("theme", "dark"); } catch (e) {}
+      } else {
+        rootEl.setAttribute("data-theme", "light");
+        try { localStorage.setItem("theme", "light"); } catch (e) {}
+      }
+      applyThemeIcon();
+      toast(rootEl.getAttribute("data-theme") === "light" ? "Thème clair activé" : "Thème sombre activé");
+    });
+  }
+
   /* ---------- Notification (toast) ---------- */
   var toastEl = $("#toast");
   var toastTimer = null;
