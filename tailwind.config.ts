@@ -1,53 +1,23 @@
 import type { Config } from "tailwindcss";
-
 const config: Config = {
+  darkMode: "class",
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        /* Palette or — de l'or pâle au bronze sombre */
-        gold: {
-          50: "#FBF6E9",
-          100: "#F6EDD2",
-          200: "#EEDFA9",
-          300: "#E3CB7D",
-          400: "#D9B855",
-          500: "#D4AF37",
-          600: "#B08E2A",
-          700: "#8A6D20",
-          800: "#5F4B16",
-          900: "#3A2F0E",
-        },
-        /* Noirs chauds, légèrement teintés de brun */
-        nuit: {
-          800: "#14120D",
-          900: "#0B0A08",
-          950: "#050505",
-        },
+        gold: "#d3a94f",
+        golddeep: "#8a6a1f",
+        nuit: "#0d0c0a",
+        encre: "#12100c",
+        ivoire: "#f6f2e9",
+        parchemin: "#ece5d8",
       },
       fontFamily: {
-        sans: [
-          "system-ui",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "sans-serif",
-        ],
-        serif: [
-          "Playfair Display",
-          "Georgia",
-          "Times New Roman",
-          "serif",
-        ],
-      },
-      boxShadow: {
-        or: "0 12px 44px -12px rgba(212, 175, 55, 0.35)",
+        sans: ["Jost", "system-ui", "Segoe UI", "sans-serif"],
+        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
       },
     },
   },
   plugins: [],
 };
-
 export default config;
