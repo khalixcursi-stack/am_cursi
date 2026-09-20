@@ -243,7 +243,7 @@
 
       var subject = "Message du site personnel — " + nom.value.trim();
       var body =
-        "Bonjour ᴄᴜʀs,\n\n" +
+        "Bonjour ᴄᴜʀsɪ,\n\n" +
         msg.value.trim() +
         "\n\n— " + nom.value.trim() +
         "\nRépondre à : " + mail.value.trim();
