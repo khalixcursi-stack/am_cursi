@@ -1,31 +1,38 @@
-# cursi_presentation — site personnel de Zzz_cursi
+# cursi_presentation — site personnel de Cursi
 
-![Thème](assets/img/emblem.png)
-
-Site personnel de **Zzz_cursi (ᴄᴜʀsɪ)** — 19 ans, étudiant en informatique à
-Brazzaville (Congo), joueur Free Fire **Élite Héroïque** du clan **ɴᴏᴛ ʟɪᴋ s**,
-sur le jeu depuis **2019**.
+Site personnel de **Cursi** — nom d'usage **ʙᴀʀᴀʟᴀɴɢᴜɪ**, alias en ligne
+**†ㅤSYNXㅤ☯** et **Zzz_cursi** — 19 ans, étudiant en **Licence 1 Informatique**
+à Brazzaville (Congo), joueur **Free Fire Élite Héroïque** du clan
+**ɴᴏᴛ ɪᴋᴇ s** depuis **2019**.
 
 > « Étudier le jour, *Booyah* la nuit. »
+> « Le bonheur de ta vie dépend de la qualité de tes pensées. » — Marc Aurèle
 
-## ✨ Fonctionnalités
+## ✨ Sections
 
-- **Responsive / mobile-first** — Flexbox & CSS Grid, menu burger mobile
-- **Mode sombre / mode clair** — bouton de bascule dans la barre de navigation,
-  choix mémorisé (localStorage)
-- **Animations fluides** — apparition au défilement (IntersectionObserver,
-  équivalent AOS sans dépendance), compteurs animés, barres de compétences
-- **Typographie** — Cormorant Garamond + Jost (Google Fonts) et **Fira Code**
-  pour les badges techniques
-- **Sections** : Accueil (hero + CTA), Moi, Mon monde (compétences classées),
-  Projets (cartes avec image, badges de technos, liens code source / démo),
-  Parcours, Galerie (visionneuse), Contact (formulaire validé + liens sociaux)
-- **SEO & Open Graph** — `<title>`, `meta description`, OG tags pour une belle
-  carte de partage sur Discord / WhatsApp
+- **Moi** — identité complète, stats Free Fire (2 500+ h, 5 000+ Booyahs, UID
+  copiable), citation stoïcienne, passions (One Piece, stoïcisme, Craftland)
+- **Compétences** — 3 terrains : Développement (C++ POO, HTML/CSS/React/Tailwind,
+  SQL/E-A), Systèmes & réseaux (Arch/Ubuntu/Kali, WS 2022, SFTP, GRUB,
+  VirtualBox/VMware), Gamer & créateur (HUD, Craftland Studio) + bande setup
+  (Dell i5 8 Go RAM, Galaxy Z Fold2 5G, Galaxy A16, Xbox One)
+- **Projets** — ce site, modèle web de tournois e-sport, serveur Discord
+  info & prog, lab serveurs & virtualisation, clan ɴᴏᴛ ʟɪᴋᴇ ᴜs, cartes Craftland
+- **Parcours** — 2019 → aujourd'hui
+- **Galerie** — visionneuse d'images
+- **Contact** — formulaire validé + e-mail, Discord, WhatsApp, Instagram, GitHub
+
+## ✨ Fonctionnalités UI
+
+- Responsive / mobile-first (Grid + Flexbox, menu burger)
+- Mode sombre / clair persisté (localStorage)
+- Animations au scroll, compteurs animés, barres de compétences
+- Cormorant Garamond + Jost + Fira Code (Google Fonts)
+- SEO & Open Graph (belle carte de partage Discord/WhatsApp)
 
 ## 🛠️ Technologies
 
-HTML5 · CSS3 · JavaScript vanilla (aucune dépendance) · Google Fonts
+HTML5 · CSS3 · JavaScript vanilla (zéro dépendance) · Google Fonts
 
 ## 🚀 Lancer en local
 
@@ -36,32 +43,13 @@ python3 -m http.server 8080
 # ouvrir http://localhost:8080
 ```
 
-## 🌍 Déploiement (URL publique)
+## 🌍 Déploiement
 
-Le site est 100 % statique : il fonctionne sur **GitHub Pages**, **Netlify**
-ou **Vercel** sans configuration.
+Site 100 % statique : GitHub Pages (*Settings → Pages*, branche
+`arena/01a0c04a-cursi-presentation`, dossier `/`), Netlify ou Vercel.
+URL visée : `https://khalixcursi-stack.github.io/cursi_presentation/`
 
-**GitHub Pages (1 clic) :**
-1. Sur GitHub : *Settings → Pages*
-2. *Source* : **Deploy from a branch** → branche `arena/01a0c04a-cursi-presentation`, dossier `/ (root)` → *Save*
-3. URL publique : `https://khalixcursi-stack.github.io/cursi_presentation/`
-
-*(L'activation automatique via l'API GitHub n'est pas permise par le jeton de
-ce workspace — d'où la manipulation manuelle ci-dessus.)*
-
-## 📁 Structure
-
-```
-cursi_presentation/
-├── index.html              # page unique (toutes les sections)
-├── assets/
-│   ├── css/style.css       # styles + thème clair/sombre
-│   ├── js/main.js          # thème, animations, compteurs, lightbox, formulaire
-│   └── img/                # emblem, personnage, moments, emblème de clan
-└── README.md
-```
-
-## 🔗 Me contacter
+## 🔗 Contact
 
 - E-mail : baralangui7@gmail.com
 - Discord : https://discord.gg/W7S3YdKE
