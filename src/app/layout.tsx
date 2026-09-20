@@ -26,7 +26,7 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ctext x='32' y='45' font-family='Georgia, serif' font-size='36' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E"
+          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ccircle cx='32' cy='34' r='21.5' fill='none' stroke='%23D4AF37' stroke-width='1.4'/%3E%3Cpath d='M42 26 C 36 18, 19 19, 15.5 31 C 12 43, 21.5 53, 37 51 C 41.5 50.3, 45 48, 47 45' fill='none' stroke='%23D4AF37' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"
         />
       </head>
       <body className="fond-nuit min-h-screen font-sans text-neutral-200 antialiased">

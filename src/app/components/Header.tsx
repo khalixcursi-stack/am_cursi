@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { IconeCroix, IconeMenu } from "./Icones";
+import LogoCursi from "./LogoCursi";
 
 const liens = [
   { href: "#apropos", label: "À propos" },
@@ -17,11 +18,8 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gold-500/20 bg-nuit-950/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a
-          href="#hero"
-          className="font-serif text-xl font-bold tracking-[0.18em] text-gold-300"
-        >
-          CURSI<span className="text-gold-500">.</span>
+        <a href="#hero" aria-label="Cursi — retour en haut" className="flex items-center">
+          <LogoCursi className="h-10 w-auto" />
         </a>
 
         <nav

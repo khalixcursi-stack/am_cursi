@@ -59,6 +59,8 @@ cursi_presentation/
 │   └── components/
 │       ├── Header.tsx  Hero.tsx  About.tsx  Skills.tsx
 │       ├── Projects.tsx  Experience.tsx  Contact.tsx  Footer.tsx
+│       ├── Icones.tsx   # jeu d'icônes SVG inline
+│       └── LogoCursi.tsx # logo signature (monogramme + paraphe)
 ├── public/og.png
 ├── tailwind.config.ts · tsconfig.json · next.config.mjs · package.json
 └── README.md

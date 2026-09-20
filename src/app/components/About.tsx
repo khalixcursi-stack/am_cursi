@@ -1,5 +1,6 @@
 import { FREE_FIRE, IDENTITE } from "../data";
 import { IconeGamepad, IconeOrdinateur, IconeSmartphone } from "./Icones";
+import { MonogrammeCursi } from "./LogoCursi";
 
 const passions = ["One Piece", "Stoïcisme", "Free Fire", "Craftland Studio"];
 const setup = [
@@ -13,11 +14,8 @@ export default function About() {
   return (
     <section id="apropos" className="px-6 py-24">
       <div className="mx-auto grid max-w-6xl items-start gap-12 md:grid-cols-[auto_1fr]">
-        <div
-          aria-hidden="true"
-          className="mx-auto flex h-40 w-40 items-center justify-center rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/20 via-nuit-900 to-nuit-950 font-serif text-6xl font-bold text-gold-300 shadow-or"
-        >
-          C
+        <div className="mx-auto flex h-44 w-44 items-center justify-center rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/15 via-nuit-900 to-nuit-950 shadow-or">
+          <MonogrammeCursi className="h-32 w-32" />
         </div>
         <div>
           <h2 className="filet-dore font-serif text-3xl font-bold text-neutral-100">
