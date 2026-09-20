@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cursi — Licence Informatique & Gamer Free Fire",
     description:
+      "« L'élégance dans le code, la fureur dans l'arène. » " +
       "19 ans · Brazzaville · Licence 1 Informatique · Élite Héroïque · depuis 2019",
     images: ["/og.png"],
   },

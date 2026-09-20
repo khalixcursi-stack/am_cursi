@@ -1,4 +1,5 @@
 import { FREE_FIRE, IDENTITE } from "../data";
+import { IconeEtoile } from "./Icones";
 
 export default function Hero() {
   return (
@@ -17,9 +18,21 @@ export default function Hero() {
           Étudiant en {IDENTITE.etudes}, développeur en devenir — et joueur
           Free Fire {FREE_FIRE.rang} depuis {FREE_FIRE.depuis}.
         </p>
-        <p className="mt-3 font-serif text-lg italic text-gold-300/90">
-          « {IDENTITE.slogan} »
-        </p>
+        <div className="mt-6 flex items-center justify-center gap-4">
+          <span
+            aria-hidden="true"
+            className="hidden h-px w-14 bg-gradient-to-r from-transparent to-gold-500/70 sm:block"
+          />
+          <p className="flex items-center gap-3 font-serif text-lg italic text-gold-300">
+            <IconeEtoile className="h-3 w-3 text-gold-500" />
+            {IDENTITE.devise}
+            <IconeEtoile className="h-3 w-3 text-gold-500" />
+          </p>
+          <span
+            aria-hidden="true"
+            className="hidden h-px w-14 bg-gradient-to-l from-transparent to-gold-500/70 sm:block"
+          />
+        </div>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a

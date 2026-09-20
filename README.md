@@ -12,7 +12,7 @@ Construit avec **Next.js 15 + TypeScript + Tailwind CSS**, suivant la méthode
 `Header` (fixe, blur, burger mobile) → `Hero` → `About` →
 `Skills` → `Projects` → `Experience` → `Contact` → `Footer`
 
-- **Hero** : nom + slogan « Étudier le jour, Booyah la nuit. » + CTA
+- **Hero** : nom + devise « L'élégance dans le code, la fureur dans l'arène. » + CTA
 - **À propos** : présentation, citation de Marc Aurèle, passions (One Piece,
   stoïcisme, Craftland), setup matériel
 - **Compétences** : langages & code (C++ POO, SQL, modélisation E/A…),
