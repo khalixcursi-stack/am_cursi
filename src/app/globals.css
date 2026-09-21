@@ -1,6 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html { scroll-behavior: smooth; }
-section[id] { scroll-margin-top: 5rem; }
-::selection { background: #d3a94f; color: #14100a; }
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Le header fait 4rem en mobile et 5rem à partir de md. */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  @media (min-width: 768px) {
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #d3a94f;
+    color: #14100a;
+  }
+
+  /* Anneau de focus visible et cohérent avec l'identité dorée. */
+  :focus-visible {
+    outline: 2px solid #d3a94f;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* Or lisible sur fond clair (6,1:1) sans perdre l'éclat sur fond sombre. */
+  .texte-accent {
+    @apply text-orgrave dark:text-gold;
+  }
+
+  .bordure-accent {
+    @apply border-orgrave/30 dark:border-gold/30;
+  }
+}
+
+/* Barre de défilement discrète, dans les tons du thème. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(211 169 79 / 0.45) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(211 169 79 / 0.35);
+  background-clip: content-box;
+  border: 3px solid transparent;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(211 169 79 / 0.6);
+  background-clip: content-box;
+}
+
+/* Les animations ne sont jamais indispensables : on les coupe si demandé. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
