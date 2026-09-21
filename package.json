@@ -1,10 +1,12 @@
 {
   "name": "cursi-portfolio",
   "version": "1.0.0",
+  "description": "Portfolio personnel de Cursi — Next.js, TypeScript et Tailwind CSS.",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "typecheck": "tsc --noEmit",
     "start": "next start"
   },
   "dependencies": {
