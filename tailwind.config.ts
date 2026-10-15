@@ -24,9 +24,24 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(-0.5rem)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        montee: {
+          from: { opacity: "0", transform: "translateY(1.5rem)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "fondu-or": {
+          from: { opacity: "0", transform: "scaleX(0)" },
+          to: { opacity: "1", transform: "scaleX(1)" },
+        },
+        "flottement": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "apparition-menu": "apparition-menu 200ms ease-out both",
+        montee: "montee 800ms cubic-bezier(0.22, 1, 0.36, 1) both",
+        "fondu-or": "fondu-or 1100ms cubic-bezier(0.22, 1, 0.36, 1) both",
+        flottement: "flottement 6s ease-in-out infinite",
       },
       backgroundImage: {
         "halo-or":

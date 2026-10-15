@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   },
 };
 
+/** Délai d'apparition (ms) pour l'entrée échelonnée du hero. */
+const delai = (ms: number) => ({ animationDelay: `${ms}ms` });
+
 const ICONES_VALEURS = [IconTrophy, IconLaptop, IconUsers];
 const ICONES_AVANTAGES = [IconGlobe, IconSparkles, IconUsers, IconLaptop, IconServer, IconTrophy];
 
@@ -26,25 +29,36 @@ export default function CarrieresPage() {
     <>
       {/* Accroche */}
       <section aria-labelledby="titre-carrieres" className="relative overflow-hidden px-6 pb-20 pt-32 md:pt-40">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-halo-or" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-halo-or motion-safe:animate-flottement" />
         <div className="relative mx-auto max-w-6xl">
-          <p className="text-xs uppercase tracking-[0.3em] texte-accent">Carrières · {IDENTITE.ville}</p>
-          <h1 id="titre-carrieres" className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[1.05] sm:text-6xl md:text-7xl">
+          <p className="motion-safe:animate-montee text-xs uppercase tracking-[0.3em] texte-accent" style={delai(0)}>
+            Carrières · {IDENTITE.ville}
+          </p>
+          <h1
+            id="titre-carrieres"
+            className="motion-safe:animate-montee mt-6 max-w-4xl font-serif text-5xl font-normal leading-[1.05] sm:text-6xl md:text-7xl"
+            style={delai(120)}
+          >
             {CARRIERES.accroche}
           </h1>
-          <p className="mt-8 max-w-2xl text-base font-light leading-relaxed opacity-80 sm:text-lg">
+          <span
+            aria-hidden="true"
+            className="motion-safe:animate-fondu-or mt-8 block h-px w-24 origin-left bg-gold"
+            style={delai(500)}
+          />
+          <p className="motion-safe:animate-montee mt-8 max-w-2xl text-base font-light leading-relaxed opacity-80 sm:text-lg" style={delai(300)}>
             {CARRIERES.intro}
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="motion-safe:animate-montee mt-10 flex flex-col gap-4 sm:flex-row" style={delai(450)}>
             <a
               href="#postes"
-              className="border border-gold bg-gold px-8 py-3.5 text-center text-sm text-[#14100a] transition-colors hover:bg-gold/85"
+              className="border border-gold bg-gold px-8 py-3.5 text-center text-sm text-[#14100a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/85 hover:shadow-[0_8px_24px_-8px_rgb(211_169_79/0.6)]"
             >
               Voir les postes ouverts
             </a>
             <Link
               href="/"
-              className="border border-orgrave/40 px-8 py-3.5 text-center text-sm transition-colors hover:border-orgrave hover:text-orgrave dark:border-gold/40 dark:hover:border-gold dark:hover:text-gold"
+              className="border border-orgrave/40 px-8 py-3.5 text-center text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-orgrave hover:text-orgrave dark:border-gold/40 dark:hover:border-gold dark:hover:text-gold"
             >
               Retour au portfolio
             </Link>
@@ -82,9 +96,9 @@ export default function CarrieresPage() {
             {CARRIERES.valeurs.map((valeur, index) => {
               const Icone = ICONES_VALEURS[index];
               return (
-                <li key={valeur.titre} className="bg-ivoire p-8 dark:bg-nuit">
+                <li key={valeur.titre} className="group bg-ivoire p-8 transition-colors duration-500 hover:bg-parchemin dark:bg-nuit dark:hover:bg-encre">
                   <Reveal delay={index * 80}>
-                    <Icone className="h-6 w-6 texte-accent" />
+                    <Icone className="h-6 w-6 texte-accent transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-6" />
                     <h3 className="mt-6 font-serif text-2xl">{valeur.titre}</h3>
                     <p className="mt-4 leading-relaxed opacity-80">{valeur.texte}</p>
                   </Reveal>
@@ -106,12 +120,16 @@ export default function CarrieresPage() {
           </Reveal>
           <ul className="mt-12 divide-y divide-orgrave/20 border-y border-orgrave/20 dark:divide-gold/20 dark:border-gold/20">
             {CARRIERES.postes.map((poste, index) => (
-              <li key={poste.titre}>
+              <li key={poste.titre} className="relative">
                 <Reveal delay={index * 60}>
                   <a
                     href={`mailto:${CONTACTS.email}?subject=${encodeURIComponent(`Candidature : ${poste.titre}`)}`}
-                    className="group grid gap-3 py-7 md:grid-cols-[1fr_auto] md:items-center md:gap-8"
+                    className="group relative grid gap-3 py-7 pl-0 transition-[padding] duration-500 hover:pl-5 md:grid-cols-[1fr_auto] md:items-center md:gap-8"
                   >
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-y-0 left-0 w-px origin-top scale-y-0 bg-gold transition-transform duration-500 group-hover:scale-y-100"
+                    />
                     <div>
                       <h3 className="font-serif text-2xl leading-tight transition-colors group-hover:text-orgrave dark:group-hover:text-gold">{poste.titre}</h3>
                       <p className="mt-2 text-sm leading-relaxed opacity-80">{poste.description}</p>
@@ -146,9 +164,9 @@ export default function CarrieresPage() {
             {CARRIERES.avantages.map((avantage, index) => {
               const Icone = ICONES_AVANTAGES[index];
               return (
-                <li key={avantage.titre}>
+                <li key={avantage.titre} className="group">
                   <Reveal delay={index * 60}>
-                    <Icone className="h-6 w-6 texte-accent" />
+                    <Icone className="h-6 w-6 texte-accent transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12" />
                     <h3 className="mt-5 font-serif text-2xl">{avantage.titre}</h3>
                     <p className="mt-3 leading-relaxed opacity-80">{avantage.texte}</p>
                   </Reveal>
@@ -172,8 +190,8 @@ export default function CarrieresPage() {
             {realisations.map((projet, index) => (
               <li key={projet.titre}>
                 <Reveal delay={index * 80}>
-                  <article className="flex h-full flex-col border border-orgrave/20 bg-ivoire dark:border-gold/20 dark:bg-nuit">
-                    <picture>
+                  <article className="group flex h-full flex-col overflow-hidden border border-orgrave/20 bg-ivoire transition-all duration-500 hover:-translate-y-1 hover:border-orgrave/50 hover:shadow-xl dark:border-gold/20 dark:bg-nuit dark:hover:border-gold/50">
+                    <picture className="block overflow-hidden">
                       <source srcSet={projet.imageWebp} type="image/webp" />
                       <img
                         src={projet.image}
@@ -181,7 +199,7 @@ export default function CarrieresPage() {
                         width={960}
                         height={600}
                         loading="lazy"
-                        className="aspect-[16/10] w-full object-cover"
+                        className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </picture>
                     <div className="flex flex-1 flex-col p-6">
@@ -205,7 +223,7 @@ export default function CarrieresPage() {
           <p className="mt-6 leading-relaxed opacity-80">{CARRIERES.candidature.texte}</p>
           <a
             href={`mailto:${CONTACTS.email}?subject=${encodeURIComponent("Candidature — Carrières Cursi")}`}
-            className="mt-10 inline-flex items-center gap-3 border border-gold bg-gold px-8 py-3.5 text-sm text-[#14100a] transition-colors hover:bg-gold/85"
+            className="mt-10 inline-flex items-center gap-3 border border-gold bg-gold px-8 py-3.5 text-sm text-[#14100a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/85"
           >
             <IconMail className="h-4 w-4" />
             Envoyer une candidature
