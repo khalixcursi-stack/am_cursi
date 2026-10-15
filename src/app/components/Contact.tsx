@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CONTACTS, IDENTITE, LIENS_CONTACT } from "../data";
 import Reveal from "./Reveal";
 import {
@@ -33,7 +34,13 @@ export default function Contact() {
             {IDENTITE.statut}
           </p>
 
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/carrieres"
+              className="inline-flex max-w-full items-center justify-center gap-3 border border-orgrave/40 px-5 py-4 text-sm transition-colors hover:border-orgrave hover:text-orgrave sm:px-8 dark:border-gold/40 dark:hover:border-gold dark:hover:text-gold"
+            >
+              Carrières · postes ouverts
+            </Link>
             <a
               href={`mailto:${CONTACTS.email}`}
               className="inline-flex max-w-full items-center justify-center gap-3 border border-gold bg-gold px-5 py-4 text-sm text-[#14100a] transition-colors hover:bg-gold/85 sm:px-8"

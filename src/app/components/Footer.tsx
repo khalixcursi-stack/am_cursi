@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="flex items-center gap-6 text-xs">
             <span className="opacity-60">Next.js · Tailwind</span>
             <a
-              href="#hero"
+              href="/#hero"
               className="inline-flex items-center gap-2 texte-accent hover:underline"
             >
               Haut de page

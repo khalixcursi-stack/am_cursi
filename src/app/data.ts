@@ -226,7 +226,82 @@ export const LIENS_CONTACT: { label: string; description: string; href: string; 
 
 /** Liens du pied de page : sections puis réseaux. */
 export const LIENS_PIED: Lien[] = [
-  ...SECTIONS.map(section => ({ label: section.label, href: `#${section.id}`, externe: false })),
+  ...SECTIONS.map(section => ({ label: section.label, href: `/#${section.id}`, externe: false })),
+  { label: "Carrières", href: "/carrieres", externe: false },
   { label: "GitHub", href: CONTACTS.githubProfil, externe: true },
   { label: "Instagram", href: CONTACTS.instagram, externe: true },
 ];
+
+/**
+ * Page « Carrières » (/carrieres) : même structure qu'une page de recrutement
+ * classique, contenu propre à Cursi. Tout se modifie ici.
+ */
+export const CARRIERES = {
+  accroche: "Construire avec sérieux, jouer avec passion.",
+  intro:
+    "Je cherche des personnes curieuses pour apprendre, construire des projets utiles et progresser ensemble — en équipe comme en solo.",
+  histoire: [
+    "Étudiant en Licence 1 Informatique à Brazzaville, je code le jour et je joue le soir. Ce portfolio, mes projets web et mes outils Linux sont nés de cette double passion.",
+    "Le Free Fire m'a appris la stratégie, la communication en équipe et la gestion de la pression. L'informatique m'apprend à transformer une idée en quelque chose qui tourne.",
+  ],
+  valeurs: [
+    {
+      titre: "Viser la victoire",
+      texte:
+        "Chaque décision compte : je pèse les compromis, j'évalue les risques et je choisis la voie la plus susceptible de faire avancer le projet.",
+    },
+    {
+      titre: "Assumer le résultat",
+      texte:
+        "Je prends en charge le résultat de bout en bout, sans attendre qu'on me le demande. Les échecs servent à s'améliorer, les réussites à recommencer mieux.",
+    },
+    {
+      titre: "Élever les autres",
+      texte:
+        "On progresse plus vite à plusieurs. J'aime partager ce que je sais, relire le travail des autres et accepter qu'une bonne idée vienne de n'importe qui.",
+    },
+  ],
+  postes: [
+    {
+      titre: "Stage d'initiation en développement web",
+      domaine: "Développement",
+      lieu: "Brazzaville",
+      type: "Stage",
+      description: "React, Next.js et TypeScript : création de pages, intégration de maquettes et tests sur mobile.",
+    },
+    {
+      titre: "Assistant administration systèmes Linux",
+      domaine: "Systèmes & réseaux",
+      lieu: "Brazzaville",
+      type: "Temps partiel",
+      description: "Gestion de serveurs Linux, scripts Bash, sauvegardes et documentation des procédures.",
+    },
+    {
+      titre: "Contributeur·rice projets Craftland",
+      domaine: "Création",
+      lieu: "À distance",
+      type: "Bénévole",
+      description: "Idées de cartes, tests de jouabilité et retours détaillés sur les versions en cours.",
+    },
+    {
+      titre: "Modérateur·rice du serveur Discord",
+      domaine: "Communauté",
+      lieu: "À distance",
+      type: "Bénévole",
+      description: "Accueil des nouveaux membres, organisation des tournois et aide sur les questions techniques.",
+    },
+  ],
+  avantages: [
+    { titre: "Projets concrets", texte: "Des sites, des outils et des jeux réellement utilisés, pas des exercices." },
+    { titre: "Apprentissage continu", texte: "Veille technique, cours en ligne et lectures partagées chaque semaine." },
+    { titre: "Communauté active", texte: "Un serveur Discord et une équipe Free Fire pour s'entraîner ensemble." },
+    { titre: "Matériel varié", texte: "PC, smartphones et console pour tester sur tous les supports." },
+    { titre: "Horaires souples", texte: "Des créneaux adaptés aux cours et aux examens, sans pression inutile." },
+    { titre: "Ouverture d'esprit", texte: "Des idées neuves, de la franchise et peu de hiérarchie." },
+  ],
+  candidature: {
+    titre: "Un poste vous intéresse ?",
+    texte:
+      "Envoyez-moi un court message avec votre parcours, un lien vers un projet et le poste visé. Je réponds à chaque candidature.",
+  },
+} as const;

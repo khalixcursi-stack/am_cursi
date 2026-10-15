@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { SECTIONS } from "../data";
 import { IconSun, IconMoon } from "./icons";
 
@@ -11,6 +13,10 @@ export default function Header() {
   const [ouvert, setOuvert] = useState(false);
   const [actif, setActif] = useState<string | null>(null);
   const boutonMenu = useRef<HTMLButtonElement>(null);
+  // Hors accueil, les ancres passent par « / » pour revenir sur la page d'accueil.
+  const chemin = usePathname();
+  const prefixe = chemin === "/" ? "" : "/";
+  const surCarrieres = chemin === "/carrieres";
 
   // Le thème réel n'est connu qu'au montage (appliqué par le script du layout).
   useEffect(() => {
@@ -93,7 +99,7 @@ export default function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-orgrave/20 bg-ivoire/85 backdrop-blur-lg dark:border-gold/20 dark:bg-nuit/85">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6 md:h-20">
         <a
-          href="#hero"
+          href={prefixe ? "/" : "#hero"}
           onClick={() => setOuvert(false)}
           aria-label="Cursi — retour en haut du site"
           className="font-serif text-2xl font-semibold md:text-3xl"
@@ -107,7 +113,7 @@ export default function Header() {
             return (
               <a
                 key={section.id}
-                href={`#${section.id}`}
+                href={`${prefixe}#${section.id}`}
                 aria-current={estActif ? "true" : undefined}
                 className={`group relative py-1 text-xs uppercase tracking-[0.2em] transition-colors ${
                   estActif ? "texte-accent" : "hover:text-orgrave dark:hover:text-gold"
@@ -123,6 +129,21 @@ export default function Header() {
               </a>
             );
           })}
+          <Link
+            href="/carrieres"
+            aria-current={surCarrieres ? "page" : undefined}
+            className={`group relative py-1 text-xs uppercase tracking-[0.2em] transition-colors ${
+              surCarrieres ? "texte-accent" : "hover:text-orgrave dark:hover:text-gold"
+            }`}
+          >
+            Carrières
+            <span
+              aria-hidden="true"
+              className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-current transition-transform duration-300 ${
+                surCarrieres ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
@@ -161,7 +182,7 @@ export default function Header() {
             {LIENS_MOBILE.map(lien => (
               <li key={lien.id}>
                 <a
-                  href={`#${lien.id}`}
+                  href={`${prefixe}#${lien.id}`}
                   onClick={() => setOuvert(false)}
                   aria-current={actif === lien.id ? "true" : undefined}
                   className={`flex items-baseline gap-3 border-b border-orgrave/10 py-3.5 text-sm uppercase tracking-[0.2em] transition-colors dark:border-gold/10 ${
@@ -173,6 +194,19 @@ export default function Header() {
                 </a>
               </li>
             ))}
+            <li>
+              <Link
+                href="/carrieres"
+                onClick={() => setOuvert(false)}
+                aria-current={surCarrieres ? "page" : undefined}
+                className={`flex items-baseline gap-3 border-b border-orgrave/10 py-3.5 text-sm uppercase tracking-[0.2em] transition-colors dark:border-gold/10 ${
+                  surCarrieres ? "texte-accent" : "hover:text-orgrave dark:hover:text-gold"
+                }`}
+              >
+                <span className="text-[0.6rem] tracking-[0.2em] opacity-60">06</span>
+                Carrières
+              </Link>
+            </li>
           </ul>
         </nav>
       )}
