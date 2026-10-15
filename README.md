@@ -45,6 +45,10 @@ npm run start -- --hostname 0.0.0.0
 - Projets : six cartes illustrées avec descriptions, technologies et liens.
 - Parcours : **2026 — Aujourd'hui**, 2024 et 2019.
 - Contact : e-mail, Discord, WhatsApp, Instagram et GitHub.
+- Page **Carrières** (`/carrieres`) : même structure qu'une page de recrutement
+  (accroche, histoire, valeurs, postes ouverts, avantages, derniers chantiers,
+  candidature). Son contenu est dans `CARRIERES` (`src/app/data.ts`) ; les
+  postes sont des exemples à remplacer. Elle n'utilise que des visuels propres.
 
 Tout le texte éditorial vit dans `src/app/data.ts` : les composants ne font que
 de la mise en page. Les chiffres Free Fire (rang, clan, Booyahs, heures,
@@ -92,6 +96,7 @@ l'URL déclarée dans `src/app/site.ts`.
 src/app/
   layout.tsx                Métadonnées, polices, thème initial, saut de contenu
   page.tsx                  Assemblage des sections
+  carrieres/page.tsx        Page Carrières (/carrieres)
   globals.css               Tailwind, focus, sélection, mouvement réduit
   data.ts                   Tout le contenu éditorial
   site.ts                   URL publique et description partagées
