@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0c0a'/%3E%3Ctext x='32' y='46' font-family='Georgia, serif' font-size='38' font-style='italic' fill='%23d3a94f' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E",
+        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='32' y='46' font-family='Georgia, serif' font-size='38' font-style='italic' fill='%235eead4' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E",
         type: "image/svg+xml",
       },
     ],
@@ -70,23 +70,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark light",
+  colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f2e9" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d0c0a" },
+    { media: "(prefers-color-scheme: light)", color: "#f8f7f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
   ],
 };
 
 /**
  * Applique le thème enregistré avant le premier rendu pour éviter tout
  * clignotement. Sans `localStorage` (mode privé, stockage bloqué), le thème
- * sombre reste la valeur par défaut.
+ * clair reste la valeur par défaut.
  */
-const SCRIPT_THEME = `try{var s=localStorage.getItem("theme");var sombre=s!=="light";var r=document.documentElement;r.classList.toggle("dark",sombre);r.style.colorScheme=sombre?"dark":"light";}catch(e){}`;
+const SCRIPT_THEME = `try{var s=localStorage.getItem("theme");var sombre=s==="dark";var r=document.documentElement;r.classList.toggle("dark",sombre);r.style.colorScheme=sombre?"dark":"light";}catch(e){}`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className="dark" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

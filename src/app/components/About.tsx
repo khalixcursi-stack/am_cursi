@@ -1,6 +1,7 @@
 import { FAITS_JEU, FREE_FIRE, IDENTITE, PASSIONS, SETUP, type TypeMateriel } from "../data";
 import { IconGamepad, IconLaptop, IconMap, IconShield, IconSmartphone, IconSparkles } from "./icons";
 import Reveal from "./Reveal";
+import CountUp from "./CountUp";
 
 const ICONES_MATERIEL: Record<TypeMateriel, typeof IconLaptop> = {
   pc: IconLaptop,
@@ -54,14 +55,18 @@ export default function About() {
             Ubuntu Server et Windows Server 2022 est mon second terrain d&apos;expérimentation.
           </p>
 
-          <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden border border-orgrave/20 bg-orgrave/20 sm:grid-cols-4 dark:border-gold/20 dark:bg-gold/20">
-            {FAITS_JEU.map(fait => (
-              <div key={fait.label} className="bg-ivoire px-4 py-4 dark:bg-nuit">
-                <dt className="text-[0.65rem] uppercase tracking-[0.2em] opacity-70">{fait.label}</dt>
-                <dd className="mt-1.5 font-serif text-lg texte-accent">{fait.valeur}</dd>
-              </div>
-            ))}
-          </dl>
+          <Reveal className="mt-8">
+            <dl className="grid grid-cols-2 gap-px overflow-hidden border border-orgrave/20 bg-orgrave/20 sm:grid-cols-4 dark:border-gold/20 dark:bg-gold/20">
+              {FAITS_JEU.map(fait => (
+                <div key={fait.label} className="bg-ivoire px-4 py-4 dark:bg-nuit">
+                  <dt className="text-[0.65rem] uppercase tracking-[0.2em] opacity-70">{fait.label}</dt>
+                  <dd className="mt-1.5 font-serif text-lg texte-accent">
+                    {fait.compteur ? <CountUp value={fait.compteur} suffix={fait.suffixe} /> : fait.valeur}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
 
           <blockquote className="my-8 border-l border-orgrave/40 pl-5 dark:border-gold/40">
             <p className="font-serif text-2xl italic texte-accent">« {IDENTITE.citation.texte} »</p>

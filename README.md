@@ -1,6 +1,6 @@
 # Portfolio de Cursi
 
-Portfolio personnel de **Cursi** (ʙᴀʀᴀʟɴɢᴜɪ · †ㅤSYNXㅤ☯ · Zzz_cursi),
+Portfolio personnel de **Cursi** (BARALANGUI · †ㅤSYNXㅤ☯ · Zzz_cursi),
 19 ans, en **Licence 1 Informatique** à Brazzaville, joueur Free Fire
 **Élite Héroïque** depuis 2019.
 
@@ -43,12 +43,12 @@ npm run start -- --hostname 0.0.0.0
 - Compétences : langages & code, frameworks & web, systèmes & réseaux,
   outils & gamer.
 - Projets : six cartes illustrées avec descriptions, technologies et liens.
-- Parcours : **2026 — Aujourd'hui**, 2024 et 2019.
+- Parcours : année courante — Aujourd'hui, 2024 et 2019.
 - Contact : e-mail, Discord, WhatsApp, Instagram et GitHub.
-- Page **Carrières** (`/carrieres`) : même structure qu'une page de recrutement
-  (accroche, histoire, valeurs, postes ouverts, avantages, derniers chantiers,
-  candidature). Son contenu est dans `CARRIERES` (`src/app/data.ts`) ; les
-  postes sont des exemples à remplacer. Elle n'utilise que des visuels propres.
+- Page **Collaborations** (`/carrieres`) : parcours, principes, pistes de
+  collaboration, projets et invitation à échanger. Les pistes sont clairement
+  présentées comme des exemples, pas comme des offres d'emploi. Son contenu est
+  dans `CARRIERES` (`src/app/data.ts`).
 
 Tout le texte éditorial vit dans `src/app/data.ts` : les composants ne font que
 de la mise en page. Les chiffres Free Fire (rang, clan, Booyahs, heures,
@@ -57,13 +57,13 @@ année de découverte) sont déclarés une seule fois et réutilisés dans le he
 
 ## Thèmes, accessibilité et confort
 
-- Thème noir et or par défaut, thème clair disponible, persisté via
-  `localStorage.theme`. Le choix est appliqué avant le premier rendu (aucun
-  clignotement) et la bascule reste utilisable si le stockage est bloqué.
-- L'or décoratif (`#d3a94f`) n'est utilisé comme couleur de texte que sur fond
-  sombre. Sur les fonds clairs, le texte doré passe par l'utilitaire
-  `.texte-accent` (`#8a6519`), lisible à 6,1:1, et l'or pur reste réservé aux
-  bordures et aux aplats.
+- Thème clair crème et ardoise par défaut, accent bleu pétrole et variante
+  sombre disponibles, persistés via `localStorage.theme`. Le choix est appliqué
+  avant le premier rendu (aucun clignotement) et la bascule reste utilisable si
+  le stockage est bloqué.
+- L'accent `.texte-accent` utilise un bleu pétrole lisible sur fond clair et un
+  turquoise lumineux sur fond sombre. Les anneaux de focus et les éléments
+  interactifs suivent également la palette de chaque thème.
 - Un seul `h1`, hiérarchie de titres continue, lien « Aller au contenu
   principal », anneau de focus visible, `aria-current` sur la section active,
   textes alternatifs sur toutes les images, mention « nouvel onglet » pour les
@@ -72,6 +72,9 @@ année de découverte) sont déclarés une seule fois et réutilisés dans le he
   revient sur le bouton), au défilement et au passage en écran large.
 - Les animations d'apparition sont purement décoratives : le HTML servi reste
   visible sans JavaScript et `prefers-reduced-motion` les désactive.
+- Les compteurs Free Fire et le nombre de pistes de collaboration s'animent une
+  fois à l'entrée dans l'écran. La valeur complète est présente au rendu HTML ;
+  le comptage est désactivé si `prefers-reduced-motion` est activé.
 
 ## Performance et poids
 
@@ -96,7 +99,7 @@ l'URL déclarée dans `src/app/site.ts`.
 src/app/
   layout.tsx                Métadonnées, polices, thème initial, saut de contenu
   page.tsx                  Assemblage des sections
-  carrieres/page.tsx        Page Carrières (/carrieres)
+  carrieres/page.tsx        Page Collaborations (/carrieres)
   globals.css               Tailwind, focus, sélection, mouvement réduit
   data.ts                   Tout le contenu éditorial
   site.ts                   URL publique et description partagées
@@ -105,6 +108,7 @@ src/app/
     Header.tsx   Hero.tsx       About.tsx     Skills.tsx
     Projects.tsx Experience.tsx Contact.tsx   Footer.tsx
     Reveal.tsx                Apparition au défilement (optionnelle)
+    CountUp.tsx               Compteur animé respectant le mouvement réduit
     icons.tsx
 public/
   logo-cursi.png / .webp    Logo signature
@@ -114,8 +118,19 @@ public/
     portfolio / tournois / discord / lab / clan / craftland  (.webp + .jpg)
 ```
 
-Les illustrations de projets et le logo sont des visuels générés, pas des
-captures des projets. Les liens de contact se modifient dans `src/app/data.ts`.
+Les projets utilisent des photos réelles téléchargées depuis Unsplash, sous
+licence Unsplash (https://unsplash.com/license), puis stockées localement dans
+`public/projets/` en JPEG et WebP. Le logo reste un visuel de marque. Les liens
+de contact se modifient dans `src/app/data.ts`.
+
+Sources des photos :
+
+- Portfolio : https://images.unsplash.com/photo-1516321318423-f06f85e504b3
+- Tournoi e-sport : https://images.unsplash.com/photo-1542751371-adc38448a05e
+- Communauté : https://images.unsplash.com/photo-1521737711867-e3b97375f902
+- Serveurs : https://images.unsplash.com/photo-1558494949-ef010cbdcc31
+- Gaming : https://images.unsplash.com/photo-1511512578047-dfb367046420
+- Paysage Craftland : https://images.unsplash.com/photo-1470770841072-f978cf4d019e
 
 ## Vérification
 

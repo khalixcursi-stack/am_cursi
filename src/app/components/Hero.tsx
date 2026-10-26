@@ -1,5 +1,7 @@
 import { FREE_FIRE, IDENTITE, STATS } from "../data";
 import { IconArrowDown, IconMapPin } from "./icons";
+import CountUp from "./CountUp";
+import Reveal from "./Reveal";
 
 export default function Hero() {
   const annee = new Date().getFullYear();
@@ -45,14 +47,18 @@ export default function Hero() {
           </a>
         </div>
 
-        <dl className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden border border-orgrave/20 bg-orgrave/20 sm:grid-cols-4 dark:border-gold/20 dark:bg-gold/20">
-          {STATS.map(stat => (
-            <div key={stat.legende} className="bg-ivoire/90 px-4 py-5 backdrop-blur-sm dark:bg-nuit/90">
-              <dt className="text-[0.65rem] uppercase tracking-[0.2em] opacity-70">{stat.legende}</dt>
-              <dd className="mt-2 font-serif text-xl texte-accent">{stat.valeur}</dd>
-            </div>
-          ))}
-        </dl>
+        <Reveal className="mx-auto mt-14 max-w-3xl">
+          <dl className="grid grid-cols-2 gap-px overflow-hidden border border-orgrave/20 bg-orgrave/20 sm:grid-cols-4 dark:border-gold/20 dark:bg-gold/20">
+            {STATS.map(stat => (
+              <div key={stat.legende} className="bg-ivoire/90 px-4 py-5 backdrop-blur-sm dark:bg-nuit/90">
+                <dt className="text-[0.65rem] uppercase tracking-[0.2em] opacity-70">{stat.legende}</dt>
+                <dd className="mt-2 font-serif text-xl texte-accent">
+                  {stat.compteur ? <CountUp value={stat.compteur} suffix={stat.suffixe} /> : stat.valeur}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
 
         <a
           href="#apropos"
