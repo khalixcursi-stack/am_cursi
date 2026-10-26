@@ -7,4 +7,4 @@ export const URL_SITE =
   "https://khalixcursi-stack.github.io/cursi_presentation";
 
 export const DESCRIPTION_SITE =
-  "Portfolio de Cursi (ʙᴀʀᴀʟɴɢᴜɪ) : étudiant en Licence 1 Informatique à Brazzaville, C++, web, Linux & serveurs — joueur Free Fire Élite Héroïque depuis 2019. Projets, compétences et contact.";
+  "Portfolio de Cursi (BARALANGUI) : étudiant en Licence 1 Informatique à Brazzaville, C++, web, Linux & serveurs — joueur Free Fire Élite Héroïque depuis 2019. Projets, compétences et contact.";

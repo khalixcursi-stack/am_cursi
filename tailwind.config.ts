@@ -6,14 +6,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gold: "#d3a94f",
-        golddeep: "#8a6a1f",
-        /* Or assombri : contraste AA sur les fonds clairs du thème clair. */
-        orgrave: "#8a6519",
-        nuit: "#0d0c0a",
-        encre: "#12100c",
-        ivoire: "#f6f2e9",
-        parchemin: "#ece5d8",
+        gold: "#5eead4",
+        golddeep: "#0f766e",
+        orgrave: "#0f766e",
+        nuit: "#0f172a",
+        encre: "#111c2d",
+        ivoire: "#f8f7f2",
+        parchemin: "#e2e8f0",
       },
       fontFamily: {
         sans: ["Jost", "system-ui", "Segoe UI", "sans-serif"],
@@ -45,7 +44,7 @@ const config: Config = {
       },
       backgroundImage: {
         "halo-or":
-          "radial-gradient(60% 45% at 50% 15%, rgb(211 169 79 / 0.16), transparent 70%)",
+          "radial-gradient(60% 45% at 50% 15%, rgb(13 148 136 / 0.12), transparent 70%)",
       },
     },
   },

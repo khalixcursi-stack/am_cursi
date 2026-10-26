@@ -136,7 +136,7 @@ export default function Header() {
               surCarrieres ? "texte-accent" : "hover:text-orgrave dark:hover:text-gold"
             }`}
           >
-            Carrières
+            Collaborations
             <span
               aria-hidden="true"
               className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-current transition-transform duration-300 ${
@@ -204,7 +204,7 @@ export default function Header() {
                 }`}
               >
                 <span className="text-[0.6rem] tracking-[0.2em] opacity-60">06</span>
-                Carrières
+                Collaborations
               </Link>
             </li>
           </ul>

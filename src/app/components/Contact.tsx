@@ -39,7 +39,7 @@ export default function Contact() {
               href="/carrieres"
               className="inline-flex max-w-full items-center justify-center gap-3 border border-orgrave/40 px-5 py-4 text-sm transition-colors hover:border-orgrave hover:text-orgrave sm:px-8 dark:border-gold/40 dark:hover:border-gold dark:hover:text-gold"
             >
-              Carrières · postes ouverts
+              Collaborations possibles
             </Link>
             <a
               href={`mailto:${CONTACTS.email}`}

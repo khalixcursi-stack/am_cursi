@@ -5,7 +5,7 @@
 
 export const IDENTITE = {
   prenom: "Cursi",
-  nomUsage: "ʙᴀʀᴀʟɴɢᴜɪ",
+  nomUsage: "BARALANGUI",
   alias: ["†ㅤSYNXㅤ☯", "Zzz_cursi"],
   age: 19,
   ville: "Brazzaville, Congo",
@@ -29,10 +29,15 @@ export const FREE_FIRE = {
   clan: "ɴᴏᴛ ʟɪᴋᴇ ᴜs",
 } as const;
 
+const compteurDepuisTexte = (valeur: string) => ({
+  compteur: Number(valeur.replace(/\D/g, "")),
+  suffixe: valeur.replace(/[\d\s]/g, ""),
+});
+
 /** Chiffres clés du hero (repris de FREE_FIRE pour éviter les divergences). */
-export const STATS = [
-  { valeur: FREE_FIRE.booyahs, legende: "Booyahs" },
-  { valeur: FREE_FIRE.heures, legende: "Heures de jeu" },
+export const STATS: { valeur: string; legende: string; compteur?: number; suffixe?: string }[] = [
+  { valeur: FREE_FIRE.booyahs, legende: "Booyahs", ...compteurDepuisTexte(FREE_FIRE.booyahs) },
+  { valeur: FREE_FIRE.heures, legende: "Heures de jeu", ...compteurDepuisTexte(FREE_FIRE.heures) },
   { valeur: FREE_FIRE.rang, legende: "Rang Free Fire" },
   { valeur: `Depuis ${FREE_FIRE.depuis}`, legende: "Sur Free Fire" },
 ] as const;
@@ -58,11 +63,11 @@ export const SETUP: { label: string; type: TypeMateriel }[] = [
 ];
 
 /** Faits Free Fire mis en avant dans « À propos ». */
-export const FAITS_JEU: { label: string; valeur: string }[] = [
+export const FAITS_JEU: { label: string; valeur: string; compteur?: number; suffixe?: string }[] = [
   { label: "Rang", valeur: FREE_FIRE.rang },
   { label: "Clan", valeur: FREE_FIRE.clan },
-  { label: "Booyahs", valeur: FREE_FIRE.booyahs },
-  { label: "Heures", valeur: FREE_FIRE.heures },
+  { label: "Booyahs", valeur: FREE_FIRE.booyahs, ...compteurDepuisTexte(FREE_FIRE.booyahs) },
+  { label: "Heures", valeur: FREE_FIRE.heures, ...compteurDepuisTexte(FREE_FIRE.heures) },
 ];
 
 export const COMPETENCES: { titre: string; resume: string; competences: string[] }[] = [
@@ -139,9 +144,9 @@ export const CONTACTS = {
 
 export const PROJETS: Projet[] = [
   {
-    image: "/projets/portfolio.jpg",
-    imageWebp: "/projets/portfolio.webp",
-    alt: "Éditeur de code à la syntaxe dorée sur un bureau noir",
+    image: "/projets/portfolio.jpg?v=2",
+    imageWebp: "/projets/portfolio.webp?v=2",
+    alt: "Deux personnes échangent devant un ordinateur portable",
     titre: "Portfolio personnel — ce site",
     description:
       "Mon site personnel conçu et développé de A à Z : Next.js, TypeScript, Tailwind, thèmes clair et sombre, responsive et référencement.",
@@ -149,18 +154,18 @@ export const PROJETS: Projet[] = [
     lien: { label: "Code source", href: CONTACTS.github, externe: true },
   },
   {
-    image: "/projets/tournois.jpg",
-    imageWebp: "/projets/tournois.webp",
-    alt: "Trophée doré sur une scène e-sport sombre",
+    image: "/projets/tournois.jpg?v=2",
+    imageWebp: "/projets/tournois.webp?v=2",
+    alt: "Joueur devant un écran lors d'un événement e-sport",
     titre: "Modèle web de tournois e-sport",
     description:
       "Un modèle de site pour organiser des tournois e-sport : affiches, brackets et annonces, pensé pour la communauté Free Fire.",
     techs: ["HTML", "CSS", "React", "Tailwind CSS"],
   },
   {
-    image: "/projets/discord.jpg",
-    imageWebp: "/projets/discord.webp",
-    alt: "Bulles de discussion dorées reliées en réseau sur fond noir",
+    image: "/projets/discord.jpg?v=2",
+    imageWebp: "/projets/discord.webp?v=2",
+    alt: "Un groupe de personnes travaille autour d'ordinateurs portables",
     titre: "Serveur Discord info & prog",
     description:
       "Création et organisation d'un serveur Discord axé sur l'informatique et la programmation : entraide, ressources et défis.",
@@ -168,18 +173,18 @@ export const PROJETS: Projet[] = [
     lien: { label: "Rejoindre", href: CONTACTS.discord, externe: true },
   },
   {
-    image: "/projets/lab.jpg",
-    imageWebp: "/projets/lab.webp",
-    alt: "Rack serveur et terminaux éclairés d'une lumière dorée",
+    image: "/projets/lab.jpg?v=2",
+    imageWebp: "/projets/lab.webp?v=2",
+    alt: "Baies de serveurs et câblage dans une salle informatique",
     titre: "Lab serveurs & virtualisation",
     description:
       "Ubuntu Server en VM avec partages réseau, Arch Linux automatisé via archinstall + GRUB, service SFTP OpenSSH sur Windows Server 2022.",
     techs: ["Ubuntu Server", "Arch Linux", "WS 2022", "SFTP", "GRUB"],
   },
   {
-    image: "/projets/clan.jpg",
-    imageWebp: "/projets/clan.webp",
-    alt: "Écusson héraldique doré entouré de lauriers sur fond noir",
+    image: "/projets/clan.jpg?v=2",
+    imageWebp: "/projets/clan.webp?v=2",
+    alt: "Salle d'arcade éclairée par des bornes de jeux vidéo",
     titre: `Clan ${FREE_FIRE.clan}`,
     description:
       "Guerres de clans, tactiques et cohésion de squad en Élite Héroïque : on ne ressemble à personne — c'est voulu.",
@@ -187,9 +192,9 @@ export const PROJETS: Projet[] = [
     lien: { label: "Rejoindre", href: CONTACTS.discord, externe: true },
   },
   {
-    image: "/projets/craftland.jpg",
-    imageWebp: "/projets/craftland.webp",
-    alt: "Vue aérienne d'une île d'entraînement battle royale au crépuscule",
+    image: "/projets/craftland.jpg?v=2",
+    imageWebp: "/projets/craftland.webp?v=2",
+    alt: "Lac alpin bordé de montagnes et de forêts",
     titre: "Cartes Craftland Studio",
     description:
       "Conception de cartes personnalisées dans Craftland Studio : des arènes d'entraînement pensées pour le rush et le clutch.",
@@ -200,7 +205,7 @@ export const PROJETS: Projet[] = [
 
 export const PARCOURS: { date: string; titre: string; description: string }[] = [
   {
-    date: "2026 — Aujourd'hui",
+    date: `${new Date().getFullYear()} — Aujourd'hui`,
     titre: "Licence 1 Informatique & lab systèmes",
     description:
       "POO en C++, développement web, modélisation de bases de données — et à la maison : VM Linux, serveurs et virtualisation.",
@@ -227,19 +232,19 @@ export const LIENS_CONTACT: { label: string; description: string; href: string; 
 /** Liens du pied de page : sections puis réseaux. */
 export const LIENS_PIED: Lien[] = [
   ...SECTIONS.map(section => ({ label: section.label, href: `/#${section.id}`, externe: false })),
-  { label: "Carrières", href: "/carrieres", externe: false },
+  { label: "Collaborations", href: "/carrieres", externe: false },
   { label: "GitHub", href: CONTACTS.githubProfil, externe: true },
   { label: "Instagram", href: CONTACTS.instagram, externe: true },
 ];
 
 /**
- * Page « Carrières » (/carrieres) : même structure qu'une page de recrutement
- * classique, contenu propre à Cursi. Tout se modifie ici.
+ * Page « Collaborations » (/carrieres) : pistes de collaboration, pas des offres
+ * d'emploi. Tout le contenu éditorial se modifie ici.
  */
 export const CARRIERES = {
   accroche: "Construire avec sérieux, jouer avec passion.",
   intro:
-    "Je cherche des personnes curieuses pour apprendre, construire des projets utiles et progresser ensemble — en équipe comme en solo.",
+    "J'aimerais rencontrer des personnes curieuses pour apprendre et faire avancer des projets ensemble. Les pistes ci-dessous sont des idées de collaboration, pas des offres d'emploi actuellement ouvertes.",
   histoire: [
     "Étudiant en Licence 1 Informatique à Brazzaville, je code le jour et je joue le soir. Ce portfolio, mes projets web et mes outils Linux sont nés de cette double passion.",
     "Le Free Fire m'a appris la stratégie, la communication en équipe et la gestion de la pression. L'informatique m'apprend à transformer une idée en quelque chose qui tourne.",
@@ -300,8 +305,8 @@ export const CARRIERES = {
     { titre: "Ouverture d'esprit", texte: "Des idées neuves, de la franchise et peu de hiérarchie." },
   ],
   candidature: {
-    titre: "Un poste vous intéresse ?",
+    titre: "Une collaboration vous intéresse ?",
     texte:
-      "Envoyez-moi un court message avec votre parcours, un lien vers un projet et le poste visé. Je réponds à chaque candidature.",
+      "Envoyez-moi un court message pour présenter votre idée, votre parcours ou un projet. Nous pourrons voir ensemble si une collaboration est possible.",
   },
 } as const;

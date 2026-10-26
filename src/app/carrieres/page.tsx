@@ -3,15 +3,16 @@ import Link from "next/link";
 import { CARRIERES, CONTACTS, IDENTITE, PROJETS } from "../data";
 import Reveal from "../components/Reveal";
 import { IconArrowRight, IconMail } from "../components/icons";
+import CountUp from "../components/CountUp";
 
 export const metadata: Metadata = {
-  title: "Carrières",
+  title: "Collaborations",
   description:
-    "Rejoindre Cursi : stages, missions et collaborations autour du développement web, des systèmes Linux et de la communauté Free Fire.",
+    "Découvrir les pistes de collaboration de Cursi autour du développement web, des systèmes Linux et de la communauté Free Fire.",
   alternates: { canonical: "/carrieres" },
   openGraph: {
-    title: "Carrières · Cursi",
-    description: "Stages, missions et collaborations avec Cursi, étudiant en informatique à Brazzaville.",
+    title: "Collaborations · Cursi",
+    description: "Échanger et collaborer avec Cursi autour du web, des systèmes et du jeu.",
     url: "/carrieres",
   },
 };
@@ -27,12 +28,11 @@ export default function CarrieresPage() {
 
   return (
     <>
-      {/* Accroche : titre large + mosaïque d'images, comme la page d'origine */}
       <section aria-labelledby="titre-carrieres" className="relative overflow-hidden px-6 pb-16 pt-32 md:pt-40">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-halo-or motion-safe:animate-flottement" />
         <div className="relative mx-auto max-w-6xl">
           <p className="motion-safe:animate-montee text-xs uppercase tracking-[0.3em] texte-accent" style={delai(0)}>
-            Carrières · {IDENTITE.ville}
+            Collaborations · {IDENTITE.ville}
           </p>
           <h1
             id="titre-carrieres"
@@ -48,7 +48,7 @@ export default function CarrieresPage() {
                 href="#postes"
                 className="inline-flex items-center gap-2 border border-gold bg-gold px-6 py-3 text-sm font-medium text-[#14100a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/85"
               >
-                Voir les postes ouverts
+                Voir les pistes
                 <IconArrowRight className="h-4 w-4" />
               </a>
               <Link
@@ -82,15 +82,15 @@ export default function CarrieresPage() {
             </li>
           ))}
         </ul>
+
       </section>
 
-      {/* Histoire : titre à gauche, texte à droite, séparés par un filet */}
       <section aria-labelledby="titre-histoire" className="border-t border-orgrave/20 px-6 py-24 dark:border-gold/20 md:py-32">
         <Reveal className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] md:gap-20">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] texte-accent">Notre histoire</p>
+            <p className="text-xs uppercase tracking-[0.3em] texte-accent">Mon parcours</p>
             <h2 id="titre-histoire" className="mt-4 font-sans text-4xl font-medium leading-tight tracking-tight md:text-5xl">
-              Un projet personnel, une équipe en construction.
+              Des projets personnels, l&apos;envie de progresser ensemble.
             </h2>
           </div>
           <div className="space-y-6 text-lg leading-relaxed opacity-80">
@@ -101,11 +101,10 @@ export default function CarrieresPage() {
         </Reveal>
       </section>
 
-      {/* Valeurs : trois colonnes numérotées */}
       <section aria-labelledby="titre-valeurs" className="border-t border-orgrave/20 px-6 py-24 dark:border-gold/20 md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] texte-accent">Nos valeurs</p>
+            <p className="text-xs uppercase tracking-[0.3em] texte-accent">Ma façon de travailler</p>
             <h2 id="titre-valeurs" className="mt-4 max-w-3xl font-sans text-4xl font-medium leading-tight tracking-tight md:text-5xl">
               Trois principes pour avancer.
             </h2>
@@ -129,14 +128,17 @@ export default function CarrieresPage() {
         </div>
       </section>
 
-      {/* Postes ouverts : tableau à lignes */}
       <section id="postes" aria-labelledby="titre-postes" className="border-t border-orgrave/20 bg-white/60 px-6 py-24 dark:border-gold/20 dark:bg-encre md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] texte-accent">Postes ouverts</p>
+            <p className="text-xs uppercase tracking-[0.3em] texte-accent">Pistes de collaboration</p>
             <h2 id="titre-postes" className="mt-4 font-sans text-4xl font-medium leading-tight tracking-tight md:text-5xl">
-              {CARRIERES.postes.length} missions à pourvoir.
+              <CountUp value={CARRIERES.postes.length} /> idées pour construire ensemble.
             </h2>
+            <p className="mt-5 max-w-2xl leading-relaxed opacity-75">
+              Ce ne sont pas des offres d&apos;emploi : elles illustrent les sujets sur lesquels je serais
+              heureux d&apos;échanger ou de collaborer.
+            </p>
           </Reveal>
 
           <div className="mt-14">
@@ -144,17 +146,17 @@ export default function CarrieresPage() {
               aria-hidden="true"
               className="hidden grid-cols-[2fr_1fr_1fr_1fr] gap-6 border-b border-orgrave/30 pb-3 text-xs uppercase tracking-[0.2em] opacity-60 md:grid dark:border-gold/30"
             >
-              <span>Poste</span>
+              <span>Piste</span>
               <span>Domaine</span>
               <span>Lieu</span>
-              <span>Type</span>
+              <span>Format</span>
             </div>
             <ul className="divide-y divide-orgrave/20 dark:divide-gold/20">
               {CARRIERES.postes.map((poste, index) => (
                 <li key={poste.titre} className="group relative">
                   <Reveal delay={index * 60}>
                     <a
-                      href={`mailto:${CONTACTS.email}?subject=${encodeURIComponent(`Candidature : ${poste.titre}`)}`}
+                      href={`mailto:${CONTACTS.email}?subject=${encodeURIComponent(`Collaboration : ${poste.titre}`)}`}
                       className="relative grid gap-3 py-8 pl-0 transition-[padding] duration-500 hover:pl-6 md:grid-cols-[2fr_1fr_1fr_1fr] md:items-center md:gap-6"
                     >
                       <span
@@ -182,7 +184,7 @@ export default function CarrieresPage() {
                         </span>
                         <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </p>
-                      <span className="sr-only">(candidater par e-mail)</span>
+                      <span className="sr-only">(proposer une collaboration par e-mail)</span>
                     </a>
                   </Reveal>
                 </li>
@@ -192,7 +194,6 @@ export default function CarrieresPage() {
         </div>
       </section>
 
-      {/* Avantages : grille à filets fins */}
       <section aria-labelledby="titre-avantages" className="border-t border-orgrave/20 px-6 py-24 dark:border-gold/20 md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
@@ -215,7 +216,6 @@ export default function CarrieresPage() {
         </div>
       </section>
 
-      {/* Derniers chantiers : cartes façon « actualités » */}
       <section aria-labelledby="titre-realisations" className="border-t border-orgrave/20 bg-white/60 px-6 py-24 dark:border-gold/20 dark:bg-encre md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
@@ -251,7 +251,6 @@ export default function CarrieresPage() {
         </div>
       </section>
 
-      {/* Candidature : bandeau de fin */}
       <section aria-labelledby="titre-candidature" className="border-t border-orgrave/20 px-6 py-24 dark:border-gold/20 md:py-32">
         <Reveal className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-2xl">
@@ -261,11 +260,11 @@ export default function CarrieresPage() {
             <p className="mt-6 leading-relaxed opacity-80">{CARRIERES.candidature.texte}</p>
           </div>
           <a
-            href={`mailto:${CONTACTS.email}?subject=${encodeURIComponent("Candidature — Carrières Cursi")}`}
+            href={`mailto:${CONTACTS.email}?subject=${encodeURIComponent("Proposition de collaboration — Cursi")}`}
             className="inline-flex items-center gap-3 border border-gold bg-gold px-8 py-3.5 text-sm font-medium text-[#14100a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/85"
           >
             <IconMail className="h-4 w-4" />
-            Envoyer une candidature
+            Proposer une collaboration
           </a>
         </Reveal>
       </section>
